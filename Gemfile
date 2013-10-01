@@ -8,7 +8,11 @@ gem 'actionpack', '4.0.0'
 gem 'sass-rails', '4.0.0'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'bcrypt-ruby', '3.0.0'
+
+#SecurePassword currently has an explicit dependency on bcrypt-ruby (~> 3.0.0)
+#This dependency was just updated to '~> 3.1.0' a couple of days ago, but has not made its way into the rails activemodel gem yet. When it does, you'll have to update your version accordingly.
+gem 'bcrypt-ruby','3.0.1', :require => 'bcrypt'
+
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'uglifier', '2.1.1'
@@ -37,7 +41,7 @@ group :test do
   gem 'cucumber-rails', '1.4.0', :require => false
   #gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'rb-notifu', '0.0.4'
-  gem 'win32console', '1.3.2'
+  #gem 'win32console', '1.3.2'
 
   #gem 'wdm', '0.1.0'
 end
