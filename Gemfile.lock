@@ -253,7 +253,7 @@ DEPENDENCIES
   jbuilder (= 1.5.1)
   jquery-rails (= 3.0.4)
   pg (= 0.15.1)
-  rails (= 4.0.0)
+  rails (= 3.2.14)
   rails_12factor (= 0.0.2)
   railties (= 4.0.0)
   rb-notifu (= 0.0.4)
