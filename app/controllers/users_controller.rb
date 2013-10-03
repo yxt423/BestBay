@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :admin_user,     only: :destroy
   # GET /users
   # GET /users.json
   def index
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     respond_to do |format|
-      if @user.update_attributes(user_params)
+      if @user.update_attributes(params[:user])
         format.html {
           flash[:success] = "Profile updated"
           sign_in @user
@@ -93,11 +93,11 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:fname,:lname, :email, :password,:password_confirmation, :address, :phone_no, :credit_card_no)
+    #def user_params
+      #params.require(:user).permit(:fname,:lname, :email, :password,:password_confirmation, :address, :phone_no, :credit_card_no)
       #can not use .permit in rails 3.2.13.  Can use it in rails 4.0!!!
       #in rails 3.2.13, use attr_accessible instead.
-    end
+    #end
     # Before filters
 
     def correct_user
