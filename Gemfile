@@ -52,13 +52,7 @@ end
 
 gem 'bootstrap','0.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
-<<<<<<< HEAD
-gem 'bootstrap-will_paginate', '0.0.9'
-=======
 gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'capybara','2.1.0'
 gem 'database_cleaner','1.1.1'
-
-
->>>>>>> c6ad3c509e065eecd6f4030d25245d569e36f3c8
