@@ -1,0 +1,12 @@
+<% provide(:title, "#{@item.name} #{@item.description}") %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= "#{@item.name} #{@item.description}"%>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+<%= link_to 'Back', items_path %>

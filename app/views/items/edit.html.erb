@@ -1,0 +1,33 @@
+<% provide(:title, "Edit Item") %>
+<h1>Update your item info</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+        <%= form_for(@item) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+
+            <%= f.label :category %>
+            <%= f.select :category, options_for_select(["Select One", "Cat1", "Cat2", "Cat3","Other"]),:disabled => ["Select One"]%>
+
+
+            <%= f.label :description %>
+            <%= f.text_area :description %>
+
+            <%= f.label :base_price %>
+            <%= f.text_field :base_price %>
+
+            <%= f.label :image1 %>
+            <%= f.file_field :image1 %>
+
+            <%= f.label :image2 %>
+            <%= f.file_field :image2 %>
+
+            <%= f.label :image3 %>
+            <%= f.file_field :image3 %>
+
+            <%= f.submit "Submit Item for Sale", class: "btn btn-large btn-primary" %>
+        <% end %>
+  </div>
+</div>
