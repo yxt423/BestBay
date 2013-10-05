@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
+  #before_action :signed_in_user, only: [:new, :create, :destroy]
   def index
-    @items = Item.paginate(page: params[:page])
+    @items = current_user.items.paginate(page: params[:page])
     #@items = Item.all
 
     respond_to do |format|
@@ -13,7 +14,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @items = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +26,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-    @item = Item.new
+    @item = current_user.items.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,18 +37,18 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(params[:items])
+
+    @item = current_user.items.build(params[:item])
 
     respond_to do |format|
       if @item.save
-        sign_in @item
-        format.html { redirect_to @item, notice: 'Welcome to iShopping!' }
+        format.html { redirect_to @item, notice: 'Item Added' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -59,12 +60,11 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.json
   def update
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
     respond_to do |format|
       if @item.update_attributes(params[:items])
         format.html {
           flash[:success] = "Item Added"
-          sign_in @item
           redirect_to @item  }
         format.json { head :no_content }
       else
@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item = Item.find(params[:id])
+    @item = current_user.items.find(params[:id])
     @item.destroy
 
     respond_to do |format|
@@ -87,9 +87,8 @@ class ItemsController < ApplicationController
   end
 
   private
-
-  def correct_item
-    @item = Item.find(params[:id])
-    redirect_to(root_path) unless current_item?(@item)
-  end
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
+    end
 end
