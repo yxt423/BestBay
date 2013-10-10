@@ -1,12 +1,23 @@
-<% provide(:title, "#{@user.fname} #{@user.lname}") %>
+<% provide(:title, @user.fname) %>
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-        <%= "#{@user.fname} #{@user.lname}"%>
+        <%= gravatar_for @user %>
+        <%= @user.fname %>
       </h1>
     </section>
+    <section>
+      <%= link_to "contact seller?", 'mailto:'+@user.email %>
+    </section>
   </aside>
+  <div class="span8">
+    <% if @user.items.any? %>
+        <h3>Items (<%= @user.items.count %>)</h3>
+        <ol class="apps">
+          <%= render @items %>
+        </ol>
+        <%= will_paginate @items %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to 'Back', users_path %>
