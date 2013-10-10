@@ -4,7 +4,7 @@
 <div class="row">
   <div class="span6 offset3">
 
-    <%= form_for(@item) do |f| %>
+    <%= form_for @item,:html => { :multipart => true } do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
         <%= f.label :name %>
         <%= f.text_field :name %>
@@ -17,15 +17,10 @@
 
         <%= f.label :base_price %>
         <%= f.text_field :base_price %>
-
-        <%= f.label :image1 %>
-        <%= f.file_field :image1 %>
-
-        <%= f.label :image2 %>
-        <%= f.file_field :image2 %>
-
-        <%= f.label :image3 %>
-        <%= f.file_field :image3 %>
+        <p>
+          <b> Picture </b><br/>
+          <%= f.file_field :pic %>
+        </p>
 
         <%= f.submit "Submit Item for Sale", class: "btn btn-large btn-primary" %>
     <% end %>
