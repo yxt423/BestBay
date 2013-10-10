@@ -77,8 +77,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    flash[:success]="Before destroying"
     @item = current_user.items.find(params[:id])
     @item.destroy
+
+    flash[:success]="After destroying"
 
     respond_to do |format|
       format.html { redirect_to items_url }
