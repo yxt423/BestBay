@@ -6,6 +6,28 @@
         <%= "#{@user.fname} #{@user.lname}"%>
       </h1>
     </section>
+  
+
+  <!-- display all the items that the user has created -->
+    <div class="span10 offset1">
+    <h2> My items </h2>
+      <table class="table table-striped">
+         <tr>
+            <th>Item Name</th>
+            <th>Base Price</th>
+            <th>Options</th>
+         </tr>
+         <% @items.each do |item| %> 
+         <tr>
+            <td><%= link_to item.name, item %></td>
+            <td><%= item.base_price %></td>
+            <td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_order' %></td>
+         </tr>
+         <% end %> 
+      </table>
+    </div>
+
+
   </aside>
 </div>
 
