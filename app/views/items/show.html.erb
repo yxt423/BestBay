@@ -4,6 +4,7 @@
     <section>
       <h1>
         <%= "#{@item.name} #{@item.description}"%>
+        <%= image_tag @item.pic.url(:thumb) %><br/>
       </h1>
     </section>
   </aside>
