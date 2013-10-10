@@ -52,7 +52,7 @@
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to @user, notice: 'Welcome to iShopping!' }
+        format.html { redirect_to @user, notice: 'Welcome to BestBay!' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
