@@ -56,3 +56,5 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'capybara','2.1.0'
 gem 'database_cleaner','1.1.1'
+
+gem 'rails_best_practices','1.14.0'
