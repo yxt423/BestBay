@@ -2,10 +2,20 @@
 <div class="row">
   <aside class="span4">
     <section>
+
       <h1>
-        <%= "#{@item.name} #{@item.description}"%>
-        <%= image_tag @item.pic.url(:thumb) %><br/>
+        <%= "#{@item.name}"%>
+
       </h1>
+      <%= image_tag @item.pic.url(:thumb) %><br/>
+      <br />
+      <p>
+        <%= "$ #{@item.base_price}"%>
+      </p>
+      <p>
+        <%= " #{@item.description}"%>
+      </p>
+
     </section>
   </aside>
 </div>
