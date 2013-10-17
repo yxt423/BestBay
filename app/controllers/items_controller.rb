@@ -12,7 +12,6 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/1
-  # GET /items/1.json
   def show
     @item = current_user.items.find(params[:id])
 
@@ -24,7 +23,6 @@ class ItemsController < ApplicationController
   end
 
   # GET /items/new
-  # GET /items/new.json
   def new
     @item = current_user.items.build
 
@@ -41,7 +39,6 @@ class ItemsController < ApplicationController
   end
 
   # POST /items
-  # POST /items.json
   def create
 
     @item = current_user.items.build(params[:item])
@@ -58,7 +55,6 @@ class ItemsController < ApplicationController
   end
 
   # PUT /items/1
-  # PUT /items/1.json
   def update
     @item = current_user.items.find(params[:id])
     respond_to do |format|
@@ -75,7 +71,6 @@ class ItemsController < ApplicationController
   end
 
   # DELETE /items/1
-  # DELETE /items/1.json
   def destroy
     @item = current_user.items.find(params[:id])
     @item.destroy
