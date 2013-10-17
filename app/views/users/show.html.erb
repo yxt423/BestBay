@@ -1,12 +1,37 @@
-<% provide(:title, "#{@user.fname} #{@user.lname}") %>
+<% provide(:title, @user.fname) %>
+
 <div class="row">
   <aside class="span4">
     <section>
       <h1>
-        <%= "#{@user.fname} #{@user.lname}"%>
+        <%= gravatar_for @user %>
+        <%= @user.fname %>
       </h1>
     </section>
-  </aside>
-</div>
+    <section>
+      <%= link_to "contact seller?", 'mailto:'+@user.email %>
+    </section>
 
-<%= link_to 'Back', users_path %>
+
+  <!-- display all the items that the user has created -->
+    <div class="span10 offset1">
+    <h2> My items </h2>
+      <table class="table table-striped">
+         <tr>
+            <th>Item Name</th>
+            <th>Base Price</th>
+            <th>Options</th>
+         </tr>
+         <% @items.each do |item| %> 
+         <tr>
+            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+            <td><%= item.base_price %></td>
+            <td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>
+         </tr>
+         <% end %> 
+      </table>
+    </div>
+
+  
+</aside>
+</div>

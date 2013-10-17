@@ -1,4 +1,6 @@
 NaVi::Application.routes.draw do
+
+
   root to: 'static_pages#home'
 
   match '/home',    to: 'static_pages#home',    via: 'get'
@@ -8,6 +10,7 @@ NaVi::Application.routes.draw do
   match '/signup',  to: 'users#new',            via: 'get'
 
   resources :users
+  resources :items
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

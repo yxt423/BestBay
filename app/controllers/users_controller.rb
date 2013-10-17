@@ -1,9 +1,8 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
   # GET /users
-  # GET /users.json
   def index
     @users = User.paginate(page: params[:page])
     #@users = User.all
@@ -16,19 +15,14 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    # creating an items array to get users all items
+    @items = current_user.items
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-      format.xml  { render xml: @user }
-    end
   end
 
   # GET /users/new
-  # GET /users/new.json
   def new
     @user = User.new
 
@@ -45,14 +39,13 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(params[:user])
 
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to @user, notice: 'Welcome to iShopping!' }
+        format.html { redirect_to @user, notice: 'Welcome to BestBay!' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -62,7 +55,6 @@ class UsersController < ApplicationController
   end
 
   # PUT /users/1
-  # PUT /users/1.json
   def update
     @user = User.find(params[:id])
     respond_to do |format|
@@ -80,7 +72,6 @@ class UsersController < ApplicationController
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -92,13 +83,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-    #def user_params
-      #params.require(:user).permit(:fname,:lname, :email, :password,:password_confirmation, :address, :phone_no, :credit_card_no)
-      #can not use .permit in rails 3.2.13.  Can use it in rails 4.0!!!
-      #in rails 3.2.13, use attr_accessible instead.
-    #end
-    # Before filters
 
     def correct_user
       @user = User.find(params[:id])
