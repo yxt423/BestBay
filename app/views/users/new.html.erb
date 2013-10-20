@@ -20,6 +20,10 @@
       <%= f.label :password_confirmation, "Confirm Password" %>
       <%= f.password_field :password_confirmation %>
 
+      <%= f.check_box :is_seller  %>
+      <%= f.label :'I want to sell' %>
+
+      <br><br/>
       <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
