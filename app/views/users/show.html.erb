@@ -8,10 +8,6 @@
         <%= @user.fname %>
       </h1>
     </section>
-    <section>
-      <%= link_to "contact seller?", 'mailto:'+@user.email %>
-    </section>
-
 
   <!-- display all the items that the user has created -->
     <div class="span10 offset1">
@@ -32,6 +28,25 @@
       </table>
     </div>
 
+  <!-- display all the items that the user has bid on -->
+    <!-- to be modified -->
+    <div class="span10 offset1">
+    <h2> My biddings </h2>
+      <table class="table table-striped">
+         <tr>
+            <th>Item Name</th>
+            <th>Bid Value</th>
+            <th>Current Price</th>
+         </tr>
+         <% @items.each do |item| %>
+         <tr>
+            <!--<td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>-->
+            <!--<td><%= item.base_price %></td>-->
+            <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
+         </tr>
+         <% end %>
+      </table>
+    </div>
   
 </aside>
 </div>

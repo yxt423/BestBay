@@ -14,14 +14,13 @@ describe 'User pages' do
     before { visit '/signup' }
     it_behaves_like 'static page','/signup','Sign Up','Sign Up'
 
-    it 'fill in', :js => true do
     fill_in "First Name",       with: "Example"
     fill_in "Last Name",        with: "User"
     fill_in "Email",            with: "user@example.com"
     fill_in "Password",         with: "foobar"
     fill_in "Confirm Password", with: "foobar"
     click_button "Create my account"
-    end
+
     # test seller option
     #it { should have_content('sell') }
   end

@@ -54,6 +54,7 @@ gem 'bootstrap','0.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
 
+gem 'selenium-webdriver','2.35.1'
 gem 'capybara','2.1.0'
 gem 'database_cleaner','1.1.1'
 
