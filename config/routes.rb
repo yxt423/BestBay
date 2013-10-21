@@ -9,7 +9,11 @@ NaVi::Application.routes.draw do
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
 
-  resources :users
+  resources :users  do
+    member do
+      get :enter_credit_card
+    end
+  end
   resources :items
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'

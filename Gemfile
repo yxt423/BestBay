@@ -54,8 +54,12 @@ gem 'bootstrap','0.0.1'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
 
-gem 'selenium-webdriver','2.35.1'
-gem 'capybara','2.1.0'
+group :test do
+  gem 'selenium-webdriver','2.35.1'
+  gem 'capybara','2.1.0'
+  gem 'cucumber-rails','1.4.0',:require => false
+end
+
 gem 'database_cleaner','1.1.1'
 
 gem 'rails_best_practices','1.14.0'

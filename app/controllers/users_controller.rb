@@ -1,6 +1,6 @@
  class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :enter_credit_card]
+  before_filter :correct_user,   only: [:edit, :update, :enter_credit_card]
   before_filter :admin_user,     only: :destroy
   # GET /users
   def index
@@ -35,6 +35,11 @@
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
+  end
+
+  # GET /users/1/enter_credit_card
+  def enter_credit_card
     @user = User.find(params[:id])
   end
 
