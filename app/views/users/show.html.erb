@@ -10,6 +10,7 @@
     </section>
 
   <!-- display all the items that the user has created -->
+    <% if is_seller? %>
     <div class="span10 offset1">
     <h2> My items </h2>
       <table class="table table-striped">
@@ -27,6 +28,7 @@
          <% end %> 
       </table>
     </div>
+    <% end %>
 
   <!-- display all the items that the user has bid on -->
     <!-- to be modified -->

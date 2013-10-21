@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(:version => 20131018004923) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
