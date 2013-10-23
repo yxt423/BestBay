@@ -1,13 +1,20 @@
 class User < ActiveRecord::Base
 
   has_many :items
-  attr_accessible :email, :fname,:lname, :password_confirmation, :password, :address, :phone_no, :credit_card_no, :profile_pic
+  attr_accessible :email, :fname,:lname, :password_confirmation,
+                  :password, :address, :phone_no, :credit_card_no,
+                  :profile_pic ,:is_seller,
+                  :expiry_month,:expiry_year,:security_code
 
   validates :fname,  presence: true, length: { maximum: 50 }
   validates :lname,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
-  validates :password, length: { minimum: 6 }
+  validates :password,
+            :length => { minimum: 6 },
+            :if => :password
+
+  validates :lname, length: { maximum: 50 }
 
   has_secure_password
 

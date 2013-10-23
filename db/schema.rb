@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131010214225) do
+ActiveRecord::Schema.define(:version => 20131022000034) do
+
+  create_table "bids", :force => true do |t|
+    t.float    "bid_price"
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
@@ -43,9 +51,13 @@ ActiveRecord::Schema.define(:version => 20131010214225) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "remember_token"
+    t.integer  "expiry_month"
+    t.integer  "expiry_year"
+    t.integer  "security_code"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end
+

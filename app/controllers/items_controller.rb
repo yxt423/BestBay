@@ -1,9 +1,13 @@
 class ItemsController < ApplicationController
   #before_action :signed_in_user, only: [:new, :create, :destroy]
   def index
-    @items = current_user.items.paginate(page: params[:page])
-    #@items = Item.all
-
+    @categ = params[:cat]
+    if @categ == NIL
+    @categ = "All Items"
+    @items = Item.all
+    else
+    @items = Item.find_all_by_category(@categ)
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -13,7 +17,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   def show
-    @item = current_user.items.find(params[:id])
+    @item = Item.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

@@ -1,6 +1,6 @@
  class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
-  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :enter_credit_card, :update_credit_card]
+  before_filter :correct_user,   only: [:edit, :update, :enter_credit_card, :update_credit_card]
   before_filter :admin_user,     only: :destroy
   # GET /users
   def index
@@ -38,6 +38,11 @@
     @user = User.find(params[:id])
   end
 
+  # GET /users/1/enter_credit_card
+  def enter_credit_card
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   def create
     @user = User.new(params[:user])
@@ -45,7 +50,9 @@
     respond_to do |format|
       if @user.save
         sign_in @user
-        format.html { redirect_to @user, notice: 'Welcome to BestBay!' }
+        format.html {
+          redirect_to @user, notice: 'Welcome to BestBay!'
+        }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
