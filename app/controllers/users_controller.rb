@@ -53,6 +53,7 @@
         format.html {
 
           if @user.is_seller
+            store_location
             redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
           else
             redirect_to @user, notice: 'Welcome to BestBay!'
