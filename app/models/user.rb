@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
-  has_many :items
   has_many :creditcards
+
+  has_many :items
+  has_many :bids
 
   attr_accessible :email, :fname,:lname, :password_confirmation,
                   :password, :address, :phone_no, :credit_card_no,

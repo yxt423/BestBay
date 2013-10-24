@@ -1,0 +1,9 @@
+<%= form_for @bid do |f| %>
+
+
+    <%= f.label :bid_price %>
+    <%= f.text_field :bid_price %>
+
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.submit "Submit Bid", class: "btn btn-large btn-primary" %>
+<% end %>
