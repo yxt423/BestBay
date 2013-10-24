@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
-  #before_action :signed_in_user, only: [:new, :create, :destroy]
+  before_filter :signed_in_user, only: [:new, :create, :destroy]
+
+  before_filter :check_credit_card_info, only: [:new, :create, :destroy]
+
   def index
     @categ = params[:cat]
     if @categ == NIL

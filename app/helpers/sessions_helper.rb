@@ -36,6 +36,13 @@ module SessionsHelper
     end
   end
 
+  def check_credit_card_info
+    if current_user.creditcards.count == 0
+      store_location
+      redirect_to new_creditcard_path, notice: "Please enter your credit card information to proceed."
+    end
+  end
+
   def is_seller?
     current_user.is_seller
   end
