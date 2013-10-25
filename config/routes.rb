@@ -1,5 +1,14 @@
 NaVi::Application.routes.draw do
 
+  get "creditcards/new"
+
+  get "creditcards/edit"
+
+  get "creditcards/create"
+
+  get "creditcards/update"
+
+  get "creditcards/destroy"
 
   root to: 'static_pages#home'
 
@@ -15,6 +24,8 @@ NaVi::Application.routes.draw do
     end
   end
   resources :items
+  resources :creditcards
+  resources :bids
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

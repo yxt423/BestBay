@@ -51,7 +51,14 @@
       if @user.save
         sign_in @user
         format.html {
-          redirect_to @user, notice: 'Welcome to BestBay!'
+
+          if @user.is_seller
+            store_location
+            redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
+          else
+            redirect_to @user, notice: 'Welcome to BestBay!'
+          end
+
         }
         format.json { render json: @user, status: :created, location: @user }
       else
