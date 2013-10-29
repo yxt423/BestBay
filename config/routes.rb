@@ -25,7 +25,11 @@ NaVi::Application.routes.draw do
   end
   resources :items
   resources :creditcards
-  resources :bids
+  resources :bids do
+    member do
+      get 'buy'
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

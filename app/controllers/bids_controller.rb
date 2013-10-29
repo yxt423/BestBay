@@ -37,6 +37,24 @@ class BidsController < ApplicationController
 
   end
 
+  def buy
+    @item = Item.find(params[:item_id])
+    @bid = current_user.bids.new
+
+    @bid.bid_price = @item.base_price
+    @bid.item_id = @item.id
+
+    respond_to do |format|
+      if @bid.save
+        format.html { redirect_to current_user, notice: 'New item purchased!' }
+        format.json { render json: @bid, status: :created, location: @bid }
+      else
+        format.html { redirect_to item_path, notice: 'Failed to process' }
+        format.json { render json: @bid.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def show
 
   end

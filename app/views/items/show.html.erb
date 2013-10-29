@@ -19,6 +19,7 @@
       </p>
       <div>
         <%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+        <%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
       </div>
     </section>
 </div>
