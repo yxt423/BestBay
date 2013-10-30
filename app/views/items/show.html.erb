@@ -1,12 +1,14 @@
 <% provide(:title, "#{@item.name} #{@item.description}") %>
 <div class="row">
-  <aside class="span4">
+    <aside>
+      Seller info
+    </aside>
     <section>
 
-      <h1>
+      <h2>
         <%= "#{@item.name}"%>
 
-      </h1>
+      </h2>
       <%= image_tag @item.pic.url(:thumb) %><br/>
       <br />
       <p>
@@ -15,9 +17,11 @@
       <p>
         <%= " #{@item.description}"%>
       </p>
-
+      <div>
+        <%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+        <%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+      </div>
     </section>
-  </aside>
 </div>
 
 <%= link_to 'Back', items_path %>

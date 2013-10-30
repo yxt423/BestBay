@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-
+  has_many :bids
   validates :base_price,:category, :description, :name, presence: true
   validates :name, length: { maximum: 256 }
   validates :description, length: { maximum: 1024 }

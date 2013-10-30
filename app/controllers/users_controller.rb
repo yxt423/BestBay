@@ -20,6 +20,8 @@
     # creating an items array to get users all items
     @items = current_user.items
 
+    @bids = Bid.find_all_by_user_id(current_user.id)
+
   end
 
   # GET /users/new
