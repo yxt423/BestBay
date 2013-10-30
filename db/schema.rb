@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023221520) do
+ActiveRecord::Schema.define(:version => 20131022000034) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -19,17 +19,6 @@ ActiveRecord::Schema.define(:version => 20131023221520) do
     t.integer  "item_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "creditcards", :force => true do |t|
-    t.string   "credit_card_no"
-    t.integer  "expiry_month"
-    t.integer  "expiry_year"
-    t.string   "security_code"
-    t.boolean  "primary_credit_card"
-    t.integer  "user_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -59,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20131023221520) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
