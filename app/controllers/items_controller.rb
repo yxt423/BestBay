@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @item = Item.find(params[:id])
+    @bids = Bid.find_all_by_item_id(@item.id)
+    @highest_bid = @bids[-1]
 
     respond_to do |format|
       format.html # show.html.erb
