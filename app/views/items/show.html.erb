@@ -11,7 +11,7 @@
       </h2>
 
       <!-- Thumbnail image of the item -->
-      <%= image_tag @item.pic.url(size:"50x20") %><br/>
+      <%= image_tag @item.pic.url(:thumb) %><br/>
       <br />
 
       <div id="item_details">
@@ -19,9 +19,11 @@
           <p>Base Price : <%= "$ #{@item.base_price}"%></p>
         </div>
 
+        <% if @highest_bid != nil%>
         <div id="label_bid_price">
          <p>Latest Bid Price : <%= "$ #{@highest_bid.bid_price}"%></p>
         </div>
+        <% end %>
 
         <div id="item_desc">
           <p><%= " #{@item.description}"%></p>

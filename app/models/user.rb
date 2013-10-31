@@ -18,12 +18,11 @@ class User < ActiveRecord::Base
             :length => { minimum: 6 },
             :if => :password
 
-  validates :lname, length: { maximum: 50 }
-
   has_secure_password
 
   before_save { self.email = email.downcase }
   before_create :create_remember_token
+
 
 
   def User.new_remember_token
