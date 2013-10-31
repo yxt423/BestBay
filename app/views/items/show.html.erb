@@ -19,9 +19,11 @@
           <p>Base Price : <%= "$ #{@item.base_price}"%></p>
         </div>
 
+        <% if @highest_bid != nil%>
         <div id="label_bid_price">
          <p>Latest Bid Price : <%= "$ #{@highest_bid.bid_price}"%></p>
         </div>
+        <% end %>
 
         <div id="item_desc">
           <p><%= " #{@item.description}"%></p>
