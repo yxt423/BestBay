@@ -13,6 +13,7 @@ class CreditcardsController < ApplicationController
   end
 
   def index
+    @creditcards = current_user.creditcards.all
   end
 
   def edit
@@ -21,7 +22,7 @@ class CreditcardsController < ApplicationController
 
   def create
 
-    @creditcard = current_user.creditcards.build(params[:@creditcard])
+    @creditcard = current_user.creditcards.build(params[:creditcard])
 
     respond_to do |format|
       if @creditcard.save
