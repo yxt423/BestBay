@@ -1,39 +1,42 @@
 <% provide(:title, "#{@item.name} #{@item.description}") %>
 <div class="row">
-    <aside>
-      Seller info
-    </aside>
-    <section>
 
+    <section>
       <!-- Item name -->
       <h2>
         <%= "#{@item.name}"%>
       </h2>
 
-      <!-- Thumbnail image of the item -->
-      <%= image_tag @item.pic.url(:thumb) %><br/>
-      <br />
+      <div style="width:100%;"> <!-- Main Div -->
 
-      <div id="item_details">
-        <div id="label_base_price">
-          <p>Base Price : <%= "$ #{@item.base_price}"%></p>
+        <div style="float:left; width:40%;">             <!-- Left div -->
+          <!-- Thumbnail image of the item -->
+          <%= image_tag @item.pic.url(:thumb) %><br/>
+          <br />
         </div>
+        <div style="float:right; width:50%; margin-left:10px;">       <!-- Right div -->
+          <div id="item_details">
+            <div id="label_base_price">
+              <p>Base Price : <%= "$ #{@item.base_price}"%></p>
+            </div>
 
-        <% if @highest_bid != nil%>
-        <div id="label_bid_price">
-         <p>Latest Bid Price : <%= "$ #{@highest_bid.bid_price}"%></p>
-        </div>
-        <% end %>
+            <% if @highest_bid != nil%>
+                <div id="label_bid_price">
+                  <p>Latest Bid Price : <%= "$ #{@highest_bid.bid_price}"%></p>
+                </div>
+            <% end %>
 
-        <div id="item_desc">
-          <p><%= " #{@item.description}"%></p>
-        </div>
-      
-          <!-- Links to buy or bid for the item -->
-          <div id="links_for_item">
-            <%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
-            <%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+            <div id="item_desc">
+              <p><%= " #{@item.description}"%></p>
+            </div>
+
+            <!-- Links to buy or bid for the item -->
+            <div id="links_for_item">
+              <%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+              <%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+            </div>
           </div>
+        </div>
       </div>
     </section>
 </div>
