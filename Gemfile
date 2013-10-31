@@ -63,3 +63,7 @@ end
 gem 'database_cleaner','1.1.1'
 
 gem 'rails_best_practices','1.14.0'
+
+# Adding Faker gem to create fake data while testing
+gem 'faker','1.2.0'
+
