@@ -18,8 +18,6 @@ class User < ActiveRecord::Base
             :length => { minimum: 6 },
             :if => :password
 
-  validates :lname, length: { maximum: 50 }
-
   has_secure_password
 
   before_save { self.email = email.downcase }
