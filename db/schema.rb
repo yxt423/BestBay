@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101001717) do
+ActiveRecord::Schema.define(:version => 20131101013842) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20131101001717) do
     t.integer  "item_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "quantity"
   end
 
   create_table "creditcards", :force => true do |t|
@@ -47,6 +48,17 @@ ActiveRecord::Schema.define(:version => 20131101001717) do
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
+    t.integer  "quantity"
+  end
+
+  create_table "purchases", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "buyer_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.string   "shipping_address"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|
