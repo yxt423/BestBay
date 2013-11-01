@@ -1,4 +1,5 @@
 class BidsController < ApplicationController
+  before_filter :check_credit_card_info, only: [:new, :create, :buy]
 
   def create
     @item = Item.find(params[:bid][:item_id])
@@ -43,6 +44,7 @@ class BidsController < ApplicationController
 
     @bid.bid_price = @item.base_price
     @bid.item_id = @item.id
+    @bid.user_id = current_user.id
 
     respond_to do |format|
       if @bid.save
@@ -57,6 +59,8 @@ class BidsController < ApplicationController
       end
     end
   end
+
+
 
   def show
 

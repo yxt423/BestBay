@@ -37,14 +37,15 @@
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
+            <th>Quantity</th>
             <th>Price</th>
-            <!--<th>Current Price</th>-->
          </tr>
          <% @bids.each do |bid| %>
          <tr>
             <% item = Item.find(bid.item_id) %>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
             <td><%= item.base_price %></td>
+            <td><%= item.quantity %></td>
             <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
          </tr>
          <% end %>
@@ -57,11 +58,17 @@
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Cost</th>
          </tr>
          <% @purchases.each do |purchase| %>
          <tr>
             <% @item = Item.find(purchase.item_id) %>
             <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
+            <td><%= purchase.quantity %></td>
+            <td><%= purchase.price %></td>
+            <td><%= purchase.cost %></td>
          </tr>
          <% end %>
       </table>

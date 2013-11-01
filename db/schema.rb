@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20131101013842) do
     t.integer  "buyer_id"
     t.integer  "item_id"
     t.integer  "quantity"
+    t.integer  "price"
+    t.integer  "cost"
     t.string   "shipping_address"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -71,8 +73,8 @@ ActiveRecord::Schema.define(:version => 20131101013842) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"

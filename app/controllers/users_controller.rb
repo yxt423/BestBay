@@ -17,6 +17,7 @@
   # GET /users/1
   def show
     @user = User.find(params[:id])
+    redirect_to(current_user) unless current_user?(@user)
     # creating an items array to get users all items
     @items = current_user.items
 

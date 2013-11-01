@@ -5,7 +5,9 @@ class CreatePurchases < ActiveRecord::Migration
       t.integer :buyer_id
       t.integer :item_id
       t.integer :quantity
-      t.string :shipping_address
+      t.integer :price
+      t.integer :cost
+      t.string  :shipping_address
       t.timestamps
     end
   end

@@ -7,16 +7,19 @@
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
+            <th>Quantity</th>
             <th>Price</th>
          </tr>
          <% @bids.each do |bid| %>
          <tr>
             <% item = Item.find(bid.item_id) %>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= item.base_price %></td>
+            <td><%= bid.quantity %></td>
+            <td><%= bid.bid_price %></td>
          </tr>
          <% end %>
       </table>
+      <h2 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h2>
     </div>
 </aside>
 </div>

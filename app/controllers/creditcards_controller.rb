@@ -32,7 +32,6 @@ class CreditcardsController < ApplicationController
           else
             redirect_back_or root_path
           end
-
           #notice: 'Credit card information added'
         }
         format.json { render json: @creditcard, status: :created, location: @creditcard }
@@ -49,7 +48,7 @@ class CreditcardsController < ApplicationController
     respond_to do |format|
       if @creditcard.update_attributes(params[:creditcards])
         format.html {
-          flash[:success] = "Credit card information added"
+          flash[:success] = "Credit card information updated"
           redirect_to @current_user  }
         format.json { head :no_content }
       else

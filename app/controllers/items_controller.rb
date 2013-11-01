@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
   before_filter :signed_in_user, only: [:new, :create, :destroy]
-
   before_filter :check_credit_card_info, only: [:new, :create, :destroy]
 
   def index
@@ -57,6 +56,9 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+        @user = current_user
+        @user.is_seller = true
+        @user.save
         format.html { redirect_to @item, notice: 'Item Added' }
         format.json { render json: @item, status: :created, location: @item }
       else
