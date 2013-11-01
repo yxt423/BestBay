@@ -39,14 +39,17 @@ class BidsController < ApplicationController
 
   def buy
     @item = Item.find(params[:item_id])
-    @bid = current_user.bids.new
+    @bid = Bid.new(params[:bid])
 
     @bid.bid_price = @item.base_price
     @bid.item_id = @item.id
 
     respond_to do |format|
       if @bid.save
-        format.html { redirect_to current_user, notice: 'New item purchased!' }
+        #format.html { redirect_to current_user, notice: 'New item purchased!' }
+
+        format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Item added to cart!' }
+
         format.json { render json: @bid, status: :created, location: @bid }
       else
         format.html { redirect_to item_path, notice: 'Failed to process' }

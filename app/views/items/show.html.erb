@@ -30,10 +30,26 @@
               <p><%= " #{@item.description}"%></p>
             </div>
 
+            <!-- Quantity -->
+            <div id="quantity">
+              <p>Available: <%= " #{@item.quantity}"%></p>
+
+              <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
+                  <%= f.label :quantity %>
+                  <%= f.text_field :quantity %>
+                  <%= f.submit "Add to Cart", class: "btn btn-large btn-primary" %>
+              <% end %>
+
+            </div>
+
             <!-- Links to buy or bid for the item -->
             <div id="links_for_item">
-              <%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
-              <%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>
+
+              <!-- HIDING THE BID BUTTON FOR THE DEMO   -->
+
+              <!--%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>  -->
+
+              <!--%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %-->
             </div>
           </div>
         </div>

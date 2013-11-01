@@ -33,6 +33,7 @@ NaVi::Application.routes.draw do
   resources :bids do
     member do
       get 'buy'
+      post 'buy'
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

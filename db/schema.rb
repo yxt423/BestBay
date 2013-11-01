@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101005549) do
+ActiveRecord::Schema.define(:version => 20131101013842) do
+
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -19,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20131101005549) do
     t.integer  "item_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "quantity"
   end
 
   create_table "creditcards", :force => true do |t|
