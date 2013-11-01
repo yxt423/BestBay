@@ -44,8 +44,8 @@
          <tr>
             <% item = Item.find(bid.item_id) %>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+            <td><%= bid.quantity %></td>
             <td><%= item.base_price %></td>
-            <td><%= item.quantity %></td>
             <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
          </tr>
          <% end %>
