@@ -4,7 +4,7 @@ describe Item do
 
   before do
     @user = User.new(fname: 'Example',lname: "User", email: "user@example.com", password: "111111", password_confirmation:"111111")
-    @item = Item.new(user_id: @user.id, category: "Cat1", name: "ipad", description: "This is an ipad!", base_price:10)
+    @item = Item.new(user_id: @user.id, category: "Books", name: "ipad", description: "This is an ipad!", base_price:10, quantity: 100)
   end
 
   subject { @item }
