@@ -29,6 +29,10 @@
             <div id="item_desc">
               <p><%= " #{@item.description}"%></p>
             </div>
+            <div id="seller_info">
+              <% @seller = User.find_by_id(@item.user_id) %>
+              <p><%= "seller: #{@seller.fname} #{@seller.lname}"%></p>
+            </div>
 
             <!-- Quantity -->
             <div id="quantity">

@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   has_many :bids
   has_many :purchases
 
-  validates :base_price,:category, :description, :name, presence: true
+  validates :base_price,:category, :description, :name,:quantity, presence: true
   validates :name, length: { maximum: 256 }
   validates :description, length: { maximum: 1024 }
   has_attached_file :pic, :styles =>
