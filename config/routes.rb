@@ -23,6 +23,8 @@ NaVi::Application.routes.draw do
       get :enter_credit_card
     end
   end
+  get '/users/:id/cart', to: 'users#cart'
+
   resources :items
   resources :creditcards
   resources :bids do

@@ -21,6 +21,7 @@
                 </li>
               </ul>
             </li>
+            <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" %></li>
          <% else %>
             <li><%= link_to "Sign in", signin_path %></li>
             <li><%= link_to "Register", signup_path %></li>

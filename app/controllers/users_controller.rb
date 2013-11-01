@@ -98,6 +98,13 @@
     end
   end
 
+    # GET /users/1/cart
+  def cart
+    @user = User.find(params[:id])
+    @bids = Bid.find_all_by_user_id(current_user.id)
+
+  end
+
   private
 
     def correct_user
