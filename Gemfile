@@ -12,6 +12,7 @@ end
 
 group :production do
   gem 'pg','0.17.0'
+  gem 'rails_12factor'
 end
 
 # Gems used only for assets and not required
