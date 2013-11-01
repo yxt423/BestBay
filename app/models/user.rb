@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
 
-  has_many :creditcards
-
   has_many :items
   has_many :bids
-
+  has_many :creditcards
   has_many :purchases
 
-  attr_accessible :email, :fname,:lname, :password_confirmation,
-                  :password, :address, :phone_no, :credit_card_no,
-                  :profile_pic ,:is_seller,
-                  :expiry_month,:expiry_year,:security_code
+  attr_accessible :email, :fname,:lname, :password_confirmation,:password,
+                  :address, :phone_no,:profile_pic ,
+                  :is_seller,
+                  :credit_card_no, :expiry_month,:expiry_year,:security_code,
+                  :shipping_address
 
   validates :fname,  presence: true, length: { maximum: 50 }
   validates :lname,  presence: true, length: { maximum: 50 }
