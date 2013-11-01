@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131101013842) do
 
-
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
     t.integer  "user_id"
