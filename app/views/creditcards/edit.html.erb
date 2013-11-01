@@ -16,7 +16,7 @@
         <%= f.select :expiry_year, options_for_select([2013,2014,2015,2016,2017,2018,2019,2020])%>
 
         <%= f.label :"Security Code" %>
-        <%= f.text_field :security_code %>
+        <%= f.text_field :security_code, :value => nil%>
 
         <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
     <% end %>
