@@ -1,5 +1,7 @@
 NaVi::Application.routes.draw do
 
+  get "purchases/new"
+
   get "creditcards/new"
 
   get "creditcards/edit"
@@ -27,6 +29,7 @@ NaVi::Application.routes.draw do
 
   resources :items
   resources :creditcards
+  resources :purchases
   resources :bids do
     member do
       get 'buy'

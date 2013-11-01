@@ -21,6 +21,7 @@
     @items = current_user.items
 
     @bids = Bid.find_all_by_user_id(current_user.id)
+    @purchases = Purchase.find_all_by_buyer_id(params[:id])
 
   end
 

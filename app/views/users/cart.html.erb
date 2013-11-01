@@ -16,7 +16,6 @@
          <tr>
             <th>Item Name</th>
             <th>Price</th>
-            <!--<th>Current Price</th>-->
          </tr>
          <% @bids.each do |bid| %>
          <tr>
@@ -27,6 +26,8 @@
          </tr>
          <% end %>
       </table>
+      <%= link_to "Checkout", new_purchase_path, class: "btn btn-large btn-primary" %>
+
     </div>
 
 </aside>

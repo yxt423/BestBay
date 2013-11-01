@@ -1,0 +1,38 @@
+<% provide(:title, 'Confirm New Purchase') %>
+<h1>Confirm New Purchase</h1>
+<div class="row">
+  <aside class="span4">
+    <div class="span10 offset1">
+    <h2> Item List </h2>
+      <table class="table table-striped">
+         <tr>
+            <th>Item Name</th>
+            <th>Price</th>
+         </tr>
+         <% @bids.each do |bid| %>
+         <tr>
+            <% item = Item.find(bid.item_id) %>
+            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+            <td><%= item.base_price %></td>
+         </tr>
+         <% end %>
+      </table>
+    </div>
+</aside>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@purchase) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :'You will be using the following credit card:' %>
+      <%= f.label :"#{@user.creditcards.first.credit_card_no}" %>
+      <br></br>
+      <%= f.label :'Shipping Address' %>
+      <%= f.text_field :shipping_address %>
+      <%= f.submit "Confirm the Purchase", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
