@@ -140,6 +140,9 @@ GEM
       activesupport (= 3.2.14)
       bundler (~> 1.0)
       railties (= 3.2.14)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
     rails_best_practices (1.14.0)
       activesupport
       awesome_print
@@ -149,6 +152,8 @@ GEM
       i18n
       require_all
       ruby-progressbar
+    rails_serve_static_assets (0.0.1)
+    rails_stdout_logging (0.0.3)
     railties (3.2.14)
       actionpack (= 3.2.14)
       activesupport (= 3.2.14)
@@ -230,6 +235,7 @@ DEPENDENCIES
   paperclip (~> 2.3)
   pg (= 0.17.0)
   rails (= 3.2.14)
+  rails_12factor
   rails_best_practices (= 1.14.0)
   rspec-rails (= 2.14.0)
   sass-rails (= 3.2.6)
