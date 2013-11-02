@@ -24,8 +24,9 @@ class ItemsController < ApplicationController
     @highest_bid = @bids[-1]
 
     #TO BUY AN ITEM :-
+    if signed_in?
     @bid = current_user.bids.new
-
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }

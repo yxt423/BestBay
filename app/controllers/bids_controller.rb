@@ -41,11 +41,36 @@ class BidsController < ApplicationController
   def buy
     @item = Item.find(params[:item_id])
     @bid = Bid.new(params[:bid])
+    @bids = Bid.find_all_by_item_id(params[:item_id])
+    @total = @bid.quantity
 
+    @i = 0
+    while @i < @bids.size do
+    if @bids[@i].user_id == current_user.id
+    break
+    end
+    @i += 1
+    end
+
+    if @bids.size != 0  && @i < @bids.size
+      @total += @bids[@i].quantity
+      if @total <= @item.quantity
+      @bids[@i].update_attribute(:quantity,(@total))
+      respond_to do |format|
+      format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
+      format.json { render json: @bid, status: :created, location: @bid }
+      end
+      else
+      respond_to do |format|
+        format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
+        format.json { render json: @bid.errors, status: :unprocessable_entity }
+      end
+      end
+    else
     @bid.bid_price = @item.base_price
     @bid.item_id = @item.id
     @bid.user_id = current_user.id
-
+    if @total <= @item.quantity
     respond_to do |format|
       if @bid.save
         #format.html { redirect_to current_user, notice: 'New item purchased!' }
@@ -57,11 +82,12 @@ class BidsController < ApplicationController
         format.json { render json: @bid.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-
-
-  def show
-
+    else
+      respond_to do |format|
+        format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
+        format.json { render json: @bid.errors, status: :unprocessable_entity }
+      end
+    end
+    end
   end
 end
