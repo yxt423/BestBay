@@ -14,8 +14,6 @@ describe 'Test pages' do
     end
 
 
-    it { should have_selector('h1',    text: 'All Items') }
-
 
     it "should have All Items title" do
       click_link "All"
