@@ -44,18 +44,18 @@ class BidsController < ApplicationController
     @bids = Bid.find_all_by_item_id(params[:item_id])
     @total = @bid.quantity
 
-    @i = 0
-    while @i < @bids.size do
-    if @bids[@i].user_id == current_user.id
+    i = 0
+    while i < @bids.size do
+    if @bids[i].user_id == current_user.id
     break
     end
-    @i += 1
+    i += 1
     end
 
-    if @bids.size != 0  && @i < @bids.size
-      @total += @bids[@i].quantity
+    if @bids.size != 0  && i < @bids.size
+      @total += @bids[i].quantity
       if @total <= @item.quantity
-      @bids[@i].update_attribute(:quantity,(@total))
+      @bids[i].update_attribute(:quantity,(@total))
       respond_to do |format|
       format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
       format.json { render json: @bid, status: :created, location: @bid }
