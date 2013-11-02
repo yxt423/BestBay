@@ -104,6 +104,11 @@
   def cart
     @user = User.find(params[:id])
     @bids = Bid.find_all_by_user_id(current_user.id)
+    if @bids.size == 0
+      respond_to do |format|
+        format.html { redirect_to items_path, notice: 'Cart Empty' }
+      end
+    end
 
   end
 
