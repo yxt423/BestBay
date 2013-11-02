@@ -1,9 +1,7 @@
 <% provide(:title, 'Confirm New Purchase') %>
-<h1>Confirm New Purchase</h1>
 <div class="row">
-  <aside class="span4">
-    <div class="span10 offset1">
-    <h2> Item List </h2>
+    <div class="" >
+    <h4>Confirm New Purchase(s)</h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -19,20 +17,20 @@
          </tr>
          <% end %>
       </table>
-      <h2 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h2>
+      <h4 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h4>
     </div>
-</aside>
 </div>
 
 <div class="row">
-  <div class="span6 offset3">
+  <div class="">
     <%= form_for(@purchase) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :"Using Credit Card ending in: XXXX-XXXX-XXXX-#{@user.creditcards.first.credit_card_no[12..16]}" %>
       <br></br>
       <%= f.label :'Shipping Address' %>
       <%= f.text_field :shipping_address %>
-      <%= f.submit "Confirm the Purchase", class: "btn btn-large btn-primary" %>
+        <br>
+      <%= f.submit "Confirm the Purchase", class: "btn btn-medium btn-primary" %>
     <% end %>
   </div>
 </div>

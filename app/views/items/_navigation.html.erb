@@ -1,15 +1,19 @@
-<ul>
-<h3>Categories</h3>
-    <li>
-    <%= link_to "All", items_path(:cat => NIL)%>
-    </li>
-    <li>
-      <%= link_to "Books",items_path(:cat => 'Books')%>
-    </li>
-    <li>
-      <%= link_to "Phones",items_path(:cat => 'Phones') %>
-    </li>
-    <li>
-    <%= link_to "Other",items_path(:cat => 'Other') %>
-    </li>
-</ul>
+<div class=".col-md-4" style="display: block;">
+  <div class="side-cont">
+    <ul class="nav">
+      <!-- Main menu -->
+      <li class="current">
+        <%= link_to "All", items_path(:cat => NIL)%>
+      </li>
+      <li>
+        <%= link_to "Books",items_path(:cat => 'Books')%>
+      </li>
+      <li>
+        <%= link_to "Phones",items_path(:cat => 'Phones') %>
+      </li>
+      <li>
+        <%= link_to "Other",items_path(:cat => 'Other') %>
+      </li>
+    </ul>
+  </div>
+</div>

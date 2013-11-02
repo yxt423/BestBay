@@ -1,8 +1,10 @@
 <% provide(:title, "Enter credit card details") %>
-<h1>Enter credit card details</h1>
-
 <div class="row">
-  <div class="span6 offset3">
+  <div class="" style="float: left;width: 40%">
+  <h2>Enter credit card details</h2>
+  </div>
+
+  <div class="" style="float: right;width: 60%">
     <%= form_for (@creditcard) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
@@ -17,8 +19,8 @@
 
         <%= f.label :"Security Code" %>
         <%= f.password_field :security_code %>
-
-        <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+        </br>
+        <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
     <% end %>
 
   </div>

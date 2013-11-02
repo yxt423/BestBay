@@ -1,17 +1,18 @@
 <% provide(:title, @user.fname) %>
 
 <div class="row">
-  <aside class="span4">
-    <section>
+  <div class="" style="float: left;width: 10%">
+  <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.fname %>
       </h1>
     </section>
-
+    </div>
+    <div class="" style="float: right;width: 90%">
   <!-- display all the items that the user has added to cart -->
     <div class="span10 offset1">
-    <h2> Cart </h2>
+    <h4> Cart </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -28,10 +29,9 @@
          </tr>
          <% end %>
       </table>
-      <h2 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h2>
-      <%= link_to "Checkout", new_purchase_path, class: "btn btn-large btn-primary" %>
+      <h4 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h4>
+      <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
 
     </div>
-
-</aside>
+  </div>
 </div>

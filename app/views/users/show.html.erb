@@ -1,18 +1,19 @@
 <% provide(:title, @user.fname) %>
 
 <div class="row">
-  <aside class="span4">
+  <div class="" style="float: left;width: 10%">
     <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.fname %>
       </h1>
     </section>
-
+   </div>
   <!-- display all the items that the user has created -->
-    <% if is_seller? %>
+  <div class="" style="float: right;width: 90%">
+  <% if is_seller? %>
     <div class="span10 offset1">
-    <h2> My items </h2>
+    <h4> My items </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -33,7 +34,7 @@
   <!-- display all the items that the user has bid on -->
     <!-- to be modified -->
     <div class="span10 offset1">
-    <h2> Cart </h2>
+    <h4> Cart </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -54,7 +55,7 @@
 
     <!-- display all the items that the user has purchased -->
     <div class="span10 offset1">
-    <h2> Purchase History </h2>
+    <h4> Purchase History </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -73,6 +74,5 @@
          <% end %>
       </table>
     </div>
-  
-</aside>
+   </div>
 </div>

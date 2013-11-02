@@ -1,6 +1,14 @@
 <% provide(:title, @categ) %>
-<h1><%= @categ %></h1>
-<%= render 'navigation' %>
-<ul class="items">
-  <%= render @items %>
-</ul>
+
+<h3><%= @categ %></h3>
+<div class="row">
+  <div class="col-xs-4 col-md-4" style="width: 20%;float: left">
+    <hr>
+    <%= render 'navigation' %>
+  </div>
+  <div class="col-xs-8 col-md-4" style="width: 80%;float: right">
+    <hr>
+    <%= render @items %>
+  </div>
+</div>
+

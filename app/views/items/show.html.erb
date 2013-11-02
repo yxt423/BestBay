@@ -7,14 +7,13 @@
         <%= "#{@item.name}"%>
       </h2>
 
-      <div style="width:100%;"> <!-- Main Div -->
 
         <div style="float:left; width:40%;">             <!-- Left div -->
           <!-- Thumbnail image of the item -->
           <%= image_tag @item.pic.url(:thumb) %><br/>
           <br />
         </div>
-        <div style="float:right; width:50%; margin-left:10px;">       <!-- Right div -->
+        <div style="float:right; width:60%">       <!-- Right div -->
           <div id="item_details">
             <div id="label_base_price">
               <p>Base Price : <%= "$ #{@item.base_price}"%></p>
@@ -41,7 +40,8 @@
               <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
                   <%= f.label :quantity %>
                   <%= f.text_field :quantity %>
-                  <%= f.submit "Add to Cart", class: "btn btn-large btn-primary" %>
+                      <br>
+                  <%= f.submit "Add to Cart", class: "btn btn-medium btn-primary" %>
               <% end %>
               <% else %>
               <p> Sign In to Buy Item</p>
@@ -60,7 +60,6 @@
             </div>
           </div>
         </div>
-      </div>
     </section>
 </div>
 
