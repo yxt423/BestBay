@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :fname,:lname, :password_confirmation,:password,
                   :address, :phone_no,:profile_pic ,
-                  :is_seller,
+                  :is_seller,  :is_admin,
                   :credit_card_no, :expiry_month,:expiry_year,:security_code,
                   :shipping_address
 
