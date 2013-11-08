@@ -47,6 +47,10 @@ module SessionsHelper
     current_user.is_seller
   end
 
+  def is_admin?
+    current_user.is_admin
+  end
+
   def admin_user
     redirect_to(root_path) unless current_user.admin?
   end
