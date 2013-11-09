@@ -17,12 +17,18 @@
   # GET /users/1
   def show
     @user = User.find(params[:id])
-    redirect_to(current_user) unless current_user?(@user)
-    # creating an items array to get users all items
-    @items = current_user.items
+    if is_admin?
+      @items = @user.items
+      @bids = Bid.find_all_by_user_id(@user.id)
+      @purchases = Purchase.find_all_by_buyer_id(params[:id])
+    else
+      redirect_to(current_user) unless current_user?(@user)
+      # creating an items array to get users all items
+      @items = current_user.items
+      @bids = Bid.find_all_by_user_id(current_user.id)
+      @purchases = Purchase.find_all_by_buyer_id(params[:id])
+    end
 
-    @bids = Bid.find_all_by_user_id(current_user.id)
-    @purchases = Purchase.find_all_by_buyer_id(params[:id])
 
   end
 
