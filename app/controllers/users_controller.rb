@@ -47,6 +47,15 @@
     @user = User.find(params[:id])
   end
 
+  def validate_email
+    @uid = params[:token]
+    if @token != nil
+      @user = User.find(@uid)
+
+    end
+
+  end
+
   # POST /users
   def create
     @user = User.new(params[:user])
@@ -54,6 +63,7 @@
     respond_to do |format|
       if @user.save
         sign_in @user
+        UserMailer.welcome_email(@user).deliver
         format.html {
 
           if @user.is_seller
