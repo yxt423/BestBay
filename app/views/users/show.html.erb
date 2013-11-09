@@ -9,8 +9,19 @@
       </h1>
     </section>
    </div>
+
   <!-- display all the items that the user has created -->
   <div class="" style="float: right;width: 90%">
+  <% if is_admin? %>
+    <div class="span10 offset1">
+      <!-- to be modified -->
+        <%= link_to "Deactivate User", "#", class: "btn btn-medium btn-primary" %>
+        <%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>
+        <%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>
+    </div>
+    <br></br>
+  <% end %>
+
   <% if is_seller? %>
     <div class="span10 offset1">
     <h4> My items </h4>
