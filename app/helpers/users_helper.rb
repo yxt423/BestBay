@@ -6,4 +6,17 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}"
     image_tag(gravatar_url, alt: user.email, class: "gravatar")
   end
+
+
+  def type(user)
+    if user.is_admin?
+      usertype = "Administrator"
+    elsif user.is_seller?
+      usertype = "Seller"
+    else
+      usertype = "Buyer"
+    end
+  end
+
+
 end

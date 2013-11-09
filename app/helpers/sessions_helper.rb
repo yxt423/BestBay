@@ -51,10 +51,6 @@ module SessionsHelper
     current_user.is_admin
   end
 
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
-  end
-
   def redirect_back_or(default)
     redirect_to(session[:return_to] || default)
     session.delete(:return_to)
