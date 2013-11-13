@@ -1,11 +1,11 @@
  class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :enter_credit_card, :update_credit_card]
+  before_filter :signed_in_user, only: [:index, :edit, :update,:destroy, :enter_credit_card, :update_credit_card]
   before_filter :correct_user,   only: [:edit, :update, :enter_credit_card, :update_credit_card]
-  before_filter :admin_user,     only: :destroy
+  before_filter :is_admin?,     only: :destroy
   # GET /users
   def index
     @users = User.paginate(page: params[:page])
-    #@users = User.all
+    @non_admin_users = @users.find_all_by_is_admin(false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,12 +17,18 @@
   # GET /users/1
   def show
     @user = User.find(params[:id])
-    redirect_to(current_user) unless current_user?(@user)
-    # creating an items array to get users all items
-    @items = current_user.items
+    if is_admin?
+      @items = @user.items
+      @bids = Bid.find_all_by_user_id(@user.id)
+      @purchases = Purchase.find_all_by_buyer_id(params[:id])
+    else
+      redirect_to(current_user) unless current_user?(@user)
+      # creating an items array to get users all items
+      @items = current_user.items
+      @bids = Bid.find_all_by_user_id(current_user.id)
+      @purchases = Purchase.find_all_by_buyer_id(params[:id])
+    end
 
-    @bids = Bid.find_all_by_user_id(current_user.id)
-    @purchases = Purchase.find_all_by_buyer_id(params[:id])
 
   end
 
@@ -47,6 +53,15 @@
     @user = User.find(params[:id])
   end
 
+  def validate_email
+    @uid = params[:token]
+    if @token != nil
+      @user = User.find(@uid)
+
+    end
+
+  end
+
   # POST /users
   def create
     @user = User.new(params[:user])
@@ -54,6 +69,7 @@
     respond_to do |format|
       if @user.save
         sign_in @user
+        UserMailer.welcome_email(@user).deliver
         format.html {
 
           if @user.is_seller
@@ -95,7 +111,7 @@
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.js
       format.json { head :no_content }
     end
   end
@@ -104,8 +120,15 @@
   def cart
     @user = User.find(params[:id])
     @bids = Bid.find_all_by_user_id(current_user.id)
+    if @bids.size == 0
+      respond_to do |format|
+        format.html { redirect_to items_path, notice: 'Cart Empty' }
+      end
+    end
 
   end
+
+
 
   private
 

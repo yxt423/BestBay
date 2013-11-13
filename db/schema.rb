@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131101013842) do
+
+ActiveRecord::Schema.define(:version => 20131109012223) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -80,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20131101013842) do
     t.integer  "expiry_year"
     t.integer  "security_code"
     t.string   "shipping_address"
+    t.boolean  "is_admin"
+    t.boolean  "deactivated"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
