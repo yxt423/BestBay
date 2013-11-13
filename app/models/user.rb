@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                   :address, :phone_no,:profile_pic ,
                   :is_seller,  :is_admin,
                   :credit_card_no, :expiry_month,:expiry_year,:security_code,
-                  :shipping_address
+                  :shipping_address, :deactivated
 
   validates :fname,  presence: true, length: { maximum: 50 }
   validates :lname,  presence: true, length: { maximum: 50 }

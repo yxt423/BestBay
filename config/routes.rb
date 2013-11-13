@@ -23,6 +23,8 @@ NaVi::Application.routes.draw do
   resources :users  do
     member do
       get :enter_credit_card
+      put :deactivate_user
+      put :activate_user
     end
   end
   get '/users/:id/cart', to: 'users#cart'

@@ -128,7 +128,29 @@
 
   end
 
+  def deactivate_user
+    @user = User.find(params[:id])
+    if @user != nil
+      @user.update_attribute(deactivated, true)
+    end
+    respond_to do |format|
+      format.js
+      format.html
+      format.json { head :no_content }
+    end
+  end
 
+  def activate_user
+    @user = User.find(params[:id])
+    if @user != nil
+      @user.update_attribute(deactivated, true)
+    end
+    respond_to do |format|
+      format.js
+      format.html
+      format.json { head :no_content }
+    end
+  end
 
   private
 

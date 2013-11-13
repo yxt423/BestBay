@@ -1,0 +1,3 @@
+<%= form_for(@user, :url => url_for(:controller => 'users', :action => 'activate_user'), remote:true) do |f| %>
+    <%= f.submit "Activate", class: "btn btn-medium" %>
+<% end %>

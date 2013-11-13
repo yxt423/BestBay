@@ -15,7 +15,7 @@
   <% if is_admin? %>
     <div class="span10 offset1">
       <!-- to be modified -->
-        <%= link_to "Deactivate User", "#", class: "btn btn-medium btn-primary" %>
+        <%= render 'deactivate_user_form' %>
         <%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>
         <%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>
     </div>
