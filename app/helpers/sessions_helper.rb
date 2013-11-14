@@ -21,7 +21,7 @@ module SessionsHelper
   end
 
   def signed_in?
-    !current_user.nil?
+    (!current_user.nil? || is_admin?)
   end
 
   def sign_out
@@ -37,6 +37,9 @@ module SessionsHelper
   end
 
   def check_credit_card_info
+    if is_admin?
+      return
+    end
     if current_user.creditcards.count == 0
       store_location
       redirect_to new_creditcard_path, notice: "Please enter your credit card information to proceed."
@@ -44,11 +47,13 @@ module SessionsHelper
   end
 
   def is_seller?
-    current_user.is_seller
+    (current_user.is_seller || is_admin?)
   end
 
   def is_admin?
-    current_user.is_admin
+    if(!current_user.nil?)
+      current_user.is_admin
+    end
   end
 
   def redirect_back_or(default)

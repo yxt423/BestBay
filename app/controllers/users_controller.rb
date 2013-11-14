@@ -65,7 +65,7 @@
   # POST /users
   def create
     @user = User.new(params[:user])
-
+    @user.is_admin = false
     respond_to do |format|
       if @user.save
         sign_in @user

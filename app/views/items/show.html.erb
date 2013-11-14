@@ -36,7 +36,7 @@
             <!-- Quantity -->
             <div id="quantity">
               <p>Available: <%= " #{@item.quantity}"%></p>
-              <% if signed_in? %>
+              <% if signed_in? && !is_admin? %>
               <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
                   <%= f.label :quantity %>
                   <%= f.text_field :quantity %>
@@ -44,7 +44,9 @@
                   <%= f.submit "Add to Cart", class: "btn btn-medium btn-primary" %>
               <% end %>
               <% else %>
+              <% if !is_admin? %>
               <p> Sign In to Buy Item</p>
+              <% end %>
               <% end %>
 
             </div>
