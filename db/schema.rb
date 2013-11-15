@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.integer  "quantity"
   end
 
+  add_index "bids", ["item_id"], :name => "index_bids_on_item_id"
+  add_index "bids", ["user_id"], :name => "index_bids_on_user_id"
+
+  create_table "buys", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "creditcards", :force => true do |t|
     t.string   "credit_card_no"
     t.integer  "expiry_month"
@@ -32,6 +42,8 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
   end
+
+  add_index "creditcards", ["user_id"], :name => "index_creditcards_on_user_id"
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
@@ -52,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.boolean  "deactivated"
   end
 
+  add_index "items", ["user_id"], :name => "index_items_on_user_id"
+
   create_table "purchases", :force => true do |t|
     t.integer  "user_id"
     t.integer  "buyer_id"
@@ -63,6 +77,9 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "purchases", ["item_id"], :name => "index_purchases_on_item_id"
+  add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "fname"

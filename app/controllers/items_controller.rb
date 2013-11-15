@@ -102,6 +102,7 @@ class ItemsController < ApplicationController
     if @item != nil
       @item.deactivated = true
       @item.save
+      UserMailer.notification_deactivate_item(@item).deliver
     end
     respond_to do |format|
       format.js
@@ -115,6 +116,7 @@ class ItemsController < ApplicationController
     if @item != nil
       @item.deactivated = false
       @item.save
+      UserMailer.notification_deactivate_item(@item).deliver
     end
     respond_to do |format|
       format.js
