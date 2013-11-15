@@ -23,7 +23,7 @@ class CreditcardsController < ApplicationController
   def create
 
     @creditcard = current_user.creditcards.build(params[:creditcard])
-
+    @creditcard.security_code = Creditcard.encrypt(@creditcard.security_code)
     respond_to do |format|
       if @creditcard.save
         format.html {
