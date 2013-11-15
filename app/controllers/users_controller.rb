@@ -131,7 +131,8 @@
   def deactivate_user
     @user = User.find(params[:id])
     if @user != nil
-      @user.update_attribute(deactivated, true)
+      @user.deactivated = true
+      @user.save
     end
     respond_to do |format|
       format.js
@@ -143,7 +144,8 @@
   def activate_user
     @user = User.find(params[:id])
     if @user != nil
-      @user.update_attribute(deactivated, true)
+      @user.deactivated = false
+      @user.save
     end
     respond_to do |format|
       format.js

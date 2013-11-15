@@ -1,0 +1,3 @@
+<%= form_for(@item, :url => url_for(:controller => 'items', :action => 'deactivate_item'), remote:true) do |f| %>
+    <%= f.submit "Deactivate Item", class: "btn btn-medium btn-primary" %>
+<% end %>

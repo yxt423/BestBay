@@ -7,7 +7,6 @@
         <%= "#{@item.name}"%>
       </h2>
 
-
         <div style="float:left; width:40%;">             <!-- Left div -->
           <!-- Thumbnail image of the item -->
           <%= image_tag @item.pic.url(:thumb) %><br/>
@@ -60,9 +59,22 @@
 
               <!--%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %-->
             </div>
+
+            <!-- Deactivate/Activate Item-->
+            <% if is_admin? %>
+                <div id="deactivate_user">
+                  <!-- to be modified -->
+                  <%= render 'deactivate_item_form' %>
+                </div>
+            <% end %>
+
           </div>
         </div>
     </section>
 </div>
 
 <%= link_to 'Back', items_path %>
+
+
+
+

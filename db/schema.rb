@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131109012223) do
+ActiveRecord::Schema.define(:version => 20131115000522) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20131109012223) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.integer  "quantity"
+    t.boolean  "deactivated"
   end
 
   create_table "purchases", :force => true do |t|

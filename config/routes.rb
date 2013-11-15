@@ -29,7 +29,13 @@ NaVi::Application.routes.draw do
   end
   get '/users/:id/cart', to: 'users#cart'
 
-  resources :items
+  resources :items do
+    member do
+      put :deactivate_item
+      put :activate_item
+    end
+  end
+
   resources :creditcards
   resources :purchases
   resources :bids do

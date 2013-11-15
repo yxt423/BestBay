@@ -96,6 +96,33 @@ class ItemsController < ApplicationController
     end
   end
 
+
+  def deactivate_item
+    @item = Item.find(params[:id])
+    if @item != nil
+      @item.deactivated = true
+      @item.save
+    end
+    respond_to do |format|
+      format.js
+      format.html
+      format.json { head :no_content }
+    end
+  end
+
+  def activate_item
+    @item = Item.find(params[:id])
+    if @item != nil
+      @item.deactivated = false
+      @item.save
+    end
+    respond_to do |format|
+      format.js
+      format.html
+      format.json { head :no_content }
+    end
+  end
+
   private
     def correct_user
       @user = User.find(params[:id])
