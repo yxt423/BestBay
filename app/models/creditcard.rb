@@ -30,4 +30,9 @@ class Creditcard < ActiveRecord::Base
     end
   end
 
+
+  def Creditcard.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
 end

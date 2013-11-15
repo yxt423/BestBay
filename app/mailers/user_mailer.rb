@@ -5,4 +5,11 @@ class UserMailer < ActionMailer::Base
     @url  = 'http://bbnavi.heroku.com/user?'
     mail(to: @user.email, subject: 'Welcome to My Awesome Site')
   end
+
+  def notification_deactivate_item(item)
+    @item = item
+    @user = item.user
+
+    mail(to: @user.email, subject: 'Your item is deactivated')
+  end
 end
