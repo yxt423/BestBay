@@ -10,6 +10,15 @@ class ItemsController < ApplicationController
     else
     @items = Item.find_all_by_category(@categ)
     end
+
+    if is_admin? ==  false || current_user.nil?
+    @items.each do |item|
+    if item.deactivated == true
+      @items.delete(item)
+    end
+    end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }

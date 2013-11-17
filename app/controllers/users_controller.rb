@@ -133,7 +133,12 @@
     if @user != nil
       @user.deactivated = true
       @user.save
+      @user.items.each do |item|
+        item.deactivated = true
+        item.save
+      end
     end
+
     respond_to do |format|
       format.js
       format.html
@@ -146,6 +151,10 @@
     if @user != nil
       @user.deactivated = false
       @user.save
+      @user.items.each do |item|
+        item.deactivated = false
+        item.save
+      end
     end
     respond_to do |format|
       format.js

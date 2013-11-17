@@ -22,16 +22,6 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.integer  "quantity"
   end
 
-  add_index "bids", ["item_id"], :name => "index_bids_on_item_id"
-  add_index "bids", ["user_id"], :name => "index_bids_on_user_id"
-
-  create_table "buys", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "creditcards", :force => true do |t|
     t.string   "credit_card_no"
     t.integer  "expiry_month"
@@ -43,8 +33,6 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.datetime "updated_at",          :null => false
   end
 
-  add_index "creditcards", ["user_id"], :name => "index_creditcards_on_user_id"
-
   create_table "items", :force => true do |t|
     t.integer  "user_id"
     t.string   "category"
@@ -54,17 +42,15 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.string   "image_2"
     t.string   "image_3"
     t.float    "base_price"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "pic_file_name"
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.integer  "quantity"
-    t.boolean  "deactivated"
+    t.boolean  "deactivated",      :default => false
   end
-
-  add_index "items", ["user_id"], :name => "index_items_on_user_id"
 
   create_table "purchases", :force => true do |t|
     t.integer  "user_id"
@@ -78,9 +64,6 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.datetime "updated_at",       :null => false
   end
 
-  add_index "purchases", ["item_id"], :name => "index_purchases_on_item_id"
-  add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"
-
   create_table "users", :force => true do |t|
     t.string   "fname"
     t.string   "lname"
@@ -91,15 +74,15 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
     t.integer  "security_code"
     t.string   "shipping_address"
     t.boolean  "is_admin"
-    t.boolean  "deactivated"
+    t.boolean  "deactivated",      :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
