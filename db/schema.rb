@@ -74,15 +74,15 @@ ActiveRecord::Schema.define(:version => 20131115000522) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
     t.integer  "security_code"
     t.string   "shipping_address"
     t.boolean  "is_admin"
-    t.boolean  "deactivated",      :default => false
+    t.boolean  "deactivated"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
