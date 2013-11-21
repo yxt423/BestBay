@@ -6,6 +6,9 @@
       <!-- Item name -->
       <h2>
         <%= "#{@item.name}"%>
+        <% if hotItem(@item) %>
+            <%= image_tag("hot.jpg", alt: "hot") %>
+        <% end %>
       </h2>
 
         <div style="float:left; width:40%;">             <!-- Left div -->
