@@ -9,14 +9,33 @@ class UserMailer < ActionMailer::Base
   def notification_deactivate_item(item)
     @item = item
     @user = item.user
-
+    @url  = 'http://bbnavi.heroku.com/user?'
     mail(to: @user.email, subject: 'Your item is deactivated')
+  end
+
+  def notification_activate_item(item)
+    @item = item
+    @user = item.user
+    @url  = 'http://bbnavi.heroku.com/user?'
+    mail(to: @user.email, subject: 'Your item has been activated again')
   end
 
   def notification_deactivate_user(user)
     @user = user
+    @url  = 'http://bbnavi.heroku.com/user?'
+    mail(to: @user.email, subject: 'Your BestBay account has been deactivated')
+  end
 
-    mail(to: @user.email, subject: 'Your user account is deactivated')
+  def notification_activate_user(user)
+    @user = user
+    @url  = 'http://bbnavi.heroku.com/user?'
+    mail(to: @user.email, subject: 'Your BestBay account has been activated now')
+  end
+
+  def notification_delete_user(user)
+    @user = user
+
+    mail(to: @user.email, subject: 'Your BestBay account has been deleted')
   end
 
 end

@@ -18,5 +18,12 @@ module UsersHelper
     end
   end
 
+  def status(user)
+    if user.deactivated?
+      userstatus = "Deactivated"
+    else
+      userstatus = "Active"
+    end
+  end
 
 end

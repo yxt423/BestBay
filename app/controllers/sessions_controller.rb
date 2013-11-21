@@ -6,11 +6,15 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      sign_in user
-      if is_admin?
-        redirect_to users_path , notice:'You have been signed in as the administrator.'
+      if user.deactivated == true
+        redirect_to "/signin" , notice: "Ypu have been Deactivated!!!!!"
       else
-        redirect_back_or root_path
+        sign_in user
+        if is_admin?
+          redirect_to users_path , notice:'You have been signed in as the administrator.'
+        else
+          redirect_to root_path
+        end
       end
     else
       flash.now[:error] = 'Invalid email/password combination'

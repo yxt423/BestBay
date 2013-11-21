@@ -12,6 +12,15 @@ class ItemsController < ApplicationController
       @categ = Category.find(@catid)
       @items = Item.find_all_by_category_id(@catid)
     end
+
+    if is_admin? ==  false || current_user.nil?
+    @items.each do |item|
+    if item.deactivated == true
+      @items.delete(item)
+    end
+    end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @items }
@@ -120,7 +129,7 @@ class ItemsController < ApplicationController
     if @item != nil
       @item.deactivated = false
       @item.save
-      UserMailer.notification_deactivate_item(@item).deliver
+      UserMailer.notification_activate_item(@item).deliver
     end
     respond_to do |format|
       format.js

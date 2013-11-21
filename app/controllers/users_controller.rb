@@ -109,7 +109,7 @@
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-
+    UserMailer.notification_delete_user(@user).deliver
     respond_to do |format|
       format.js
       format.json { head :no_content }
@@ -133,8 +133,15 @@
     if @user != nil
       @user.deactivated = true
       @user.save
+
+      @user.items.each do |item|
+        item.deactivated = true
+        item.save
+      end
+
       UserMailer.notification_deactivate_user(@user).deliver
     end
+
     respond_to do |format|
       format.js
       format.html
@@ -147,6 +154,11 @@
     if @user != nil
       @user.deactivated = false
       @user.save
+      @user.items.each do |item|
+        item.deactivated = false
+        item.save
+      end
+      UserMailer.notification_activate_user(@user).deliver
     end
     respond_to do |format|
       format.js

@@ -1,2 +1,11 @@
   <%= image_tag item.pic.url(:thumb) %><br/>
-  <%= link_to "#{item.name} ", item %><br/>
+  <% if item.deactivated == true  %>
+      <% @string = "(Deactivated)" %>
+  <% else %>
+      <% @string = "" %>
+  <% end %>
+  <% if is_admin? %>
+    <%= link_to "#{item.name}"+@string, item %><br/>
+  <% else %>
+    <%= link_to "#{item.name} ", item %><br/>
+  <% end %>
