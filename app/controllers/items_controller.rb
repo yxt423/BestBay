@@ -14,11 +14,11 @@ class ItemsController < ApplicationController
     end
 
     if is_admin? ==  false || current_user.nil?
-    @items.each do |item|
-    if item.deactivated == true
-      @items.delete(item)
-    end
-    end
+      @items.each do |item|
+        if item.deactivated == true
+          @items.delete(item)
+        end
+      end
     end
 
     respond_to do |format|
@@ -31,6 +31,11 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @item = Item.find(params[:id])
+
+    #update the viewed times counter of item
+    @item.view_count = @item.view_count.to_i.next
+    @item.save
+
     @bids = Bid.find_all_by_item_id(@item.id)
     @highest_bid = @bids[-1]
 
@@ -67,12 +72,16 @@ class ItemsController < ApplicationController
   def create
 
     @item = current_user.items.build(params[:item])
+    @item.view_count = -1
 
     respond_to do |format|
       if @item.save
+
+        #mark the current user as seller
         @user = current_user
         @user.is_seller = true
         @user.save
+
         format.html { redirect_to @item, notice: 'Item Added' }
         format.json { render json: @item, status: :created, location: @item }
       else

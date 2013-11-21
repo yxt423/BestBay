@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131121041450) do
+ActiveRecord::Schema.define(:version => 20131121221746) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20131121041450) do
     t.integer  "quantity"
     t.boolean  "deactivated",      :default => false
     t.integer  "category_id"
+    t.integer  "view_count"
   end
 
   create_table "purchases", :force => true do |t|
@@ -80,15 +81,15 @@ ActiveRecord::Schema.define(:version => 20131121041450) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
     t.integer  "security_code"
     t.string   "shipping_address"
     t.boolean  "is_admin"
-    t.boolean  "deactivated"
+    t.boolean  "deactivated",      :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

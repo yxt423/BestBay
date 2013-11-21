@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
                  { :medium => "300x300>", :thumb => "100x100>" }
   belongs_to :user
 
-  attr_accessible :base_price, :category_id, :description, :image_1, :image_2, :image_3, :name, :user_id, :pic, :quantity
+  attr_accessible :base_price, :category_id, :description, :image_1, :image_2, :image_3,
+                  :name, :user_id, :pic, :quantity, :view_count
 
 end
