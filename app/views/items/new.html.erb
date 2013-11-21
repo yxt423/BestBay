@@ -12,7 +12,12 @@
         <%= f.text_field :name %>
 
         <%= f.label :category_id %>
-        <% arr = @cats.map { |c| [c.name, c.id ]}      %>
+        <% if @cats.empty?
+             arr = [["All",0]]
+           else
+             arr = @cats.map { |c| [c.name, c.id ]}
+           end
+        %>
         <%= f.select :category_id, options_for_select(arr)%>
 
         <%= f.label :description %>
