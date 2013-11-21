@@ -4,7 +4,7 @@ describe Item do
 
   before do
     @user = User.new(fname: 'Example',lname: "User", email: "user@example.com", password: "111111", password_confirmation:"111111")
-    @item = Item.new(user_id: @user.id, category: "Books", name: "ipad", description: "This is an ipad!", base_price:10, quantity: 100)
+    @item = Item.new(user_id: @user.id, category_id: 1, name: "ipad", description: "This is an ipad!", base_price:10, quantity: 100)
   end
 
   subject { @item }
@@ -56,7 +56,7 @@ describe Item do
 
   describe 'when other attributes are not present' do
     before do
-      @item.category = ' '
+
       @item.base_price = ' '
       @item.user_id = ' '
     end

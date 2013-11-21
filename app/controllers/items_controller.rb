@@ -3,12 +3,14 @@ class ItemsController < ApplicationController
   before_filter :check_credit_card_info, only: [:new, :create, :destroy]
 
   def index
-    @categ = params[:cat]
-    if @categ == NIL
-    @categ = "All Items"
-    @items = Item.all
+    @cats = Category.all
+    @catid = params[:cat]
+    if @catid == NIL
+      @categ = "All Items"
+      @items = Item.all
     else
-    @items = Item.find_all_by_category(@categ)
+      @categ = Category.find(@catid)
+      @items = Item.find_all_by_category_id(@catid)
     end
     respond_to do |format|
       format.html # index.html.erb
@@ -37,6 +39,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = current_user.items.build
+    @cats = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,6 +51,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
     @item = current_user.items.find(params[:id])
+    @cats = Category.all
   end
 
   # POST /items

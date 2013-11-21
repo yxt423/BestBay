@@ -7,6 +7,7 @@
           <% if signed_in? %>
             <% if is_admin? %>
                 <li><%= link_to "All Users", "/users" ,{:style => 'color: white'}%></li>
+                <li><%= link_to "Manage Categories", "/categories" ,{:style => 'color: white'}%></li>
             <% end %>
             <li><%= link_to "Hi, #{current_user.fname} ", current_user ,{:style => 'color: orange'}%></li>
             <% unless is_admin? %>

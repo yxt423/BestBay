@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :items do
     user_id 1
-    category "MyString"
+    category_id 1
     name "MyString"
     description "MyString"
     image_1 "MyString"

@@ -133,6 +133,7 @@
     if @user != nil
       @user.deactivated = true
       @user.save
+      UserMailer.notification_deactivate_user(@user).deliver
     end
     respond_to do |format|
       format.js

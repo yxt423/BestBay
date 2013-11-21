@@ -1,5 +1,6 @@
 NaVi::Application.routes.draw do
 
+
   get "purchases/new"
 
   get "creditcards/new"
@@ -35,6 +36,8 @@ NaVi::Application.routes.draw do
       put :activate_item
     end
   end
+
+  resources :categories
 
   resources :creditcards
   resources :purchases

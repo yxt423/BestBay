@@ -5,15 +5,8 @@
       <li class="current">
         <%= link_to "All", items_path(:cat => NIL)%>
       </li>
-      <li>
-        <%= link_to "Books",items_path(:cat => 'Books')%>
-      </li>
-      <li>
-        <%= link_to "Phones",items_path(:cat => 'Phones') %>
-      </li>
-      <li>
-        <%= link_to "Other",items_path(:cat => 'Other') %>
-      </li>
+
+      <%= render @cats %>
     </ul>
   </div>
 </div>
