@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                   :address, :phone_no,:profile_pic ,
                   :is_seller,  :is_admin,
                   :credit_card_no, :expiry_month,:expiry_year,:security_code,
-                  :shipping_address, :deactivated
+                  :shipping_address, :deactivated, :activation_token
 
   validates :fname,  presence: true, length: { maximum: 50 }
   validates :lname,  presence: true, length: { maximum: 50 }
@@ -34,7 +34,18 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def activate_new_user
+    if self.deactivated?
+      generate_activation_token
+      UserMailer.welcome_email(self).deliver
+    end
+  end
 
+  def generate_activation_token
+    if self.deactivated?
+      self.update_attribute(:activation_token, SecureRandom.urlsafe_base64)
+    end
+  end
 
   private
 

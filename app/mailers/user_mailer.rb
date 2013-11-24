@@ -2,8 +2,8 @@ class UserMailer < ActionMailer::Base
   default from: "bullfrog.game@gmail.com"
   def welcome_email(user)
     @user = user
-    @url  = 'http://bbnavi.heroku.com/user?'
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    @url  = ["http://localhost:3000/users/activate_new_user?activation_token=",@user.activation_token].join("")
+    mail(to: @user.email, subject: 'Welcome to Best Bay')
   end
 
   def notification_deactivate_item(item)
