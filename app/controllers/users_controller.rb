@@ -68,13 +68,17 @@
     @user.is_admin = false
     respond_to do |format|
       if @user.save
-        sign_in @user
-        UserMailer.welcome_email(@user).deliver
+        @user.activate_new_user
+        if !@user.deactivated?
+          sign_in @user
+        end
         format.html {
 
           if @user.is_seller
             store_location
             redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
+          elsif @user.deactivated?
+            redirect_to signin_path, notice: 'You need to activate your account before you login. Please check your mail'
           else
             redirect_to @user, notice: 'Welcome to BestBay!'
           end
@@ -164,6 +168,21 @@
       format.js
       format.html
       format.json { head :no_content }
+    end
+  end
+
+  # Takes activation token of a newly created user and activates him
+  def activate_new_user
+    new_user =  User.find_by_activation_token(params[:activation_token])
+    
+    if new_user != nil
+      new_user.deactivated = false
+      new_user.save
+      sign_in new_user
+      
+      redirect_to new_user, notice: 'Welcome to BestBay! Your account has been activated'       
+    else
+      redirect_to items_path, notice: 'Invalid activation link provided. Please check mail again'
     end
   end
 
