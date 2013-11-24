@@ -27,6 +27,10 @@ NaVi::Application.routes.draw do
       put :deactivate_user
       put :activate_user
     end
+
+     collection do
+      get :activate_new_user, as: 'activation_for_new'
+    end
   end
   get '/users/:id/cart', to: 'users#cart'
 
