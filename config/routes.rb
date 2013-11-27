@@ -1,6 +1,8 @@
 NaVi::Application.routes.draw do
 
 
+  get "messages/new"
+
   get "purchases/new"
 
   get "creditcards/new"
@@ -42,6 +44,8 @@ NaVi::Application.routes.draw do
   end
 
   resources :categories
+
+  resources :messages
 
   resources :creditcards
   resources :purchases

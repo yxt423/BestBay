@@ -38,4 +38,11 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email, subject: 'Your BestBay account has been deleted')
   end
 
+  def notification_all_users(user, message)
+    @message = message
+    @user = user
+    mail(to: user.email, subject: @message.subject)
+
+  end
+
 end
