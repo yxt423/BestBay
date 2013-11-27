@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127071034) do
+ActiveRecord::Schema.define(:version => 20131127205538) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20131127071034) do
 
   create_table "items", :force => true do |t|
     t.integer  "user_id"
-    t.string   "category"
     t.string   "name"
     t.string   "description"
     t.string   "image_1"
@@ -58,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20131127071034) do
     t.boolean  "deactivated",      :default => false
     t.integer  "category_id"
     t.integer  "view_count"
+    t.boolean  "for_auction",      :default => false
   end
 
   create_table "messages", :force => true do |t|
