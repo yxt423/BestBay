@@ -20,18 +20,20 @@
         %>
         <%= f.select :category_id, options_for_select(arr)%>
 
-        <% arr2 = {"for sell" => 0, "for auction" => 1}%>
-        <%= f.label :"This item is" %>
-        <%= f.select :for_auction, options_for_select(arr2)%>
-
         <%= f.label :description %>
         <%= f.text_area :description ,:cols => "70", :rows => "5"%>
 
         <%= f.label :base_price %>
         <%= f.text_field :base_price %>
 
-        <%= f.label :quantity %>
-        <%= f.text_field :quantity %>
+        <%= f.hidden_field :for_auction, :value => params[:auction] %>
+        <% if params[:auction] == "true" %>
+            <%= f.hidden_field :quantity, :value => 1 %>
+        <% else %>
+            <%= f.label :quantity %>
+            <%= f.text_field :quantity %>
+        <% end %>
+
         <p>
           <b> Picture </b><br/>
           <%= f.file_field :pic %>

@@ -70,7 +70,6 @@ class ItemsController < ApplicationController
 
   # POST /items
   def create
-
     @item = current_user.items.build(params[:item])
     @item.view_count = -1
 

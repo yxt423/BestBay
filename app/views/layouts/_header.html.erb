@@ -16,7 +16,8 @@
             <!--the content for normal user-->
             <% else %>
                 <li><%= link_to "Hi, #{current_user.fname} ", current_user,{:style => 'color: orange'}%></li>
-                <li><%= link_to "Sell", new_item_path %></li>
+                <li><%= link_to "Sell", new_item_path(:auction => false ) %></li>
+                <li><%= link_to "Start an Auction", new_item_path(:auction => true ) %></li>
                 <li id="fat-menu" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account<b class="caret"></b> </a>
                     <ul class="dropdown-menu">
