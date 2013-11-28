@@ -25,6 +25,54 @@ module ItemsHelper
     itemsToShow
   end
 
+  def findWinner(item)
+    @bids = Bid.find_all_by_item_id(item.id)
+    @bids.each do |bid|
+      if bid.winner
+        return User.find(bid.user_id)
+        break
+      end
+    end
+    return nil
+  end
+
+  # Note: used for both "My cart" and "bidding history"
+  def itemStatusStr(item)
+    item_status_str = ""
+    case item.status
+      when 0
+        item_status_str = "for sell"
+      when 1
+        item_status_str = "ongoing auction"
+      when 2
+        item_status_str = "auction closed (waiting for payment)"
+      when 3
+        item_status_str = "auction closed"
+    end
+    item_status_str
+  end
+
+  def bidStatusStr(bid)
+    bid_status_str = ""
+    item = Item.find(bid.item_id)
+    if item.for_auction
+      if item.status == 1 # for ongoning auctions
+        if isHighestBid?(bid)
+          bid_status_str = "Highest bid!"
+        else
+          bid_status_str = "not highest bid"
+        end
+      else # for closed auctions
+        if isHighestBid?(bid)
+          bid_status_str = "Winner!"
+        else
+          bid_status_str = "not highest bid"
+        end
+      end
+    end
+    bid_status_str
+  end
+
   ##### Functions for auction status #####
 
   def auctionEndtime(item)
@@ -43,7 +91,14 @@ module ItemsHelper
   end
 
   def checkItemStatus(items)
-    items.each do |item|
+    if items.class == Array
+      items.each do |item|
+        if item.for_auction && item.status == 1 && auctionExpire?(item)
+          closeAuction(item)
+        end
+      end
+    elsif items.class == Item
+      item = items
       if item.for_auction && item.status == 1 && auctionExpire?(item)
         closeAuction(item)
       end

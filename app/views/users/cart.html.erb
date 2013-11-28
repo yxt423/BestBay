@@ -21,7 +21,7 @@
             <th>Quantity</th>
             <th>Price</th>
          </tr>
-         <% @cartItems.each do |bid| %>
+         <% @cart_items.each do |bid| %>
             <% item = Item.find(bid.item_id) %>
             <tr>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
@@ -34,7 +34,7 @@
     </div>
   </div>
 
-  <% if @unpaidAuctions.size != 0 %>
+  <% if @unpaid_auctions.size != 0 %>
   <!-- display all the auctions items that the user won and has not pay for -->
   <div class="" style="float: right;width: 90%">
     <div class="span10 offset1">
@@ -45,7 +45,7 @@
             <th>Quantity</th>
             <th>Price</th>
          </tr>
-         <% @unpaidAuctions.each do |bid| %>
+         <% @unpaid_auctions.each do |bid| %>
             <% item = Item.find(bid.item_id) %>
             <tr>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>

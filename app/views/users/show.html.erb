@@ -35,24 +35,15 @@
             <th>Options</th>
          </tr>
          <% @items.each do |item| %>
-         <% case item.status
-              when 0
-                @statusStr = "for sell"
-              when 1
-                @statusStr = "ongoing auction"
-              when 2
-                @statusStr = "closed auction"
-              when 3
-                @statusStr = "closed auction"
-            end %>
-         <tr>
+            <% @statusStr = itemStatusStr(item) %>
+            <tr>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
             <td><%= item.base_price %></td>
             <td><%= "#{@statusStr}" %></td>
             <td><% if !item.for_auction %>
               <%= link_to 'Remove', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %>
                 <% end %></td>
-         </tr>
+            </tr>
          <% end %> 
       </table>
     </div>
@@ -65,17 +56,18 @@
          <tr>
             <th>Item Name</th>
             <th>Bid price</th>
+            <th>Status</th>
             <th> </th>
          </tr>
          <% @bids.each do |bid| %>
             <% @item = Item.find(bid.item_id) %>
+            <% @statusStr = itemStatusStr(@item) %>
             <% if @item.for_auction %>
                  <tr>
                     <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
                     <td><%= bid.bid_price %></td>
-                    <td><% if bid.winner %>
-                              winner
-                        <% end %></td>
+                    <td><%= "#{@statusStr}" %></td>
+                    <td><%= "#{bidStatusStr(bid)}" %></td>
                  </tr>
             <% end %>
          <% end %>

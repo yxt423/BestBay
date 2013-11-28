@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
       @items = Item.find_all_by_category_id(@catid)
     end
 
-    @itemsToShow = itemsToShow(@items)
+    @items_to_show = itemsToShow(@items)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,6 +28,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     checkItemStatus(@item)
+    @winner = findWinner(@item)
 
     #update the viewed times counter of item
     @item.view_count = @item.view_count.to_i.next

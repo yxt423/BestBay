@@ -36,7 +36,9 @@ class PurchasesController < ApplicationController
         if @purchase.save
           format.html {
             @item.quantity = @item.quantity - @purchase.quantity
-            @item.status = 3
+            if @item.quantity == 0 || @item.for_auction
+              @item.status = 3
+            end
             @item.save
             @bid = Bid.find(bid.id)
             # if for sell, delete bid instance, if for auction, save it for bidding history
