@@ -23,7 +23,7 @@
          </tr>
          <% @bids.each do |bid| %>
             <% item = Item.find(bid.item_id) %>
-            <% if !item.for_auction %>
+            <% if !item.for_auction || (item.for_auction && item.status == 2) %>
              <tr>
                 <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
                 <td><%= bid.quantity %></td>

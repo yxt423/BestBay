@@ -24,7 +24,19 @@ module ItemsHelper
   end
 
   def closeAuction(item)
-    item.status = 2
-    item.save
+    if item.highest_bid == 0
+      item.status = 3
+      item.save
+    end
+    @bids = Bid.find_all_by_item_id(item.id)
+    @bids.each do |bid|
+      if bid.bid_price == item.highest_bid
+        bid.winner = true
+        bid.save
+        item.status = 2
+        item.save
+        break
+      end
+    end
   end
 end
