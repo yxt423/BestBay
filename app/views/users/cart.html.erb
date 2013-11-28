@@ -61,8 +61,7 @@
   <!--total price and checkout -->
   <div class="" style="float: right;width: 90%">
     <div class="span10 offset1">
-      <% totalPrice = total_price(@cartItems) + total_price(@unpaidAuctions)%>
-      <h4 style="color:red;" > Total Price: <%= " #{totalPrice}" %> </h4>
+      <h4 style="color:red;" > Total Price: <%= " #{total_price(@purchase_items)}" %> </h4>
       <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
     </div>
   </div>

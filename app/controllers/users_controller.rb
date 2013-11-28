@@ -127,8 +127,9 @@
     @bids = Bid.find_all_by_user_id(current_user.id)
     @cartItems = cartItems(@bids)
     @unpaidAuctions =  unpaidAuctions(@bids)
+    @purchaseItems = @cartItems + @unpaidAuctions
 
-    if @cartItems.size + @unpaidAuctions.size == 0
+    if @purchaseItems.size == 0
       respond_to do |format|
         format.html { redirect_to items_path, notice: 'Cart Empty' }
       end

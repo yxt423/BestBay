@@ -8,7 +8,7 @@
             <th>Quantity</th>
             <th>Price</th>
          </tr>
-         <% @bids.each do |bid| %>
+         <% @purchase_items.each do |bid| %>
          <tr>
             <% item = Item.find(bid.item_id) %>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>

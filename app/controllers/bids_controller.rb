@@ -8,6 +8,7 @@ class BidsController < ApplicationController
         @item = Item.find(params[:bid][:item_id])
         #@bid.item_id = @item.id
         @item.highest_bid = @bid.bid_price
+        @item.save
         @bid.quantity = 1
         @bid.winner = false
         if @bid.save

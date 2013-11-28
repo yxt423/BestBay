@@ -1,7 +1,10 @@
 class PurchasesController < ApplicationController
   def new
-    @bids = Bid.find_all_by_user_id(current_user.id)
     @user = current_user
+    @bids = Bid.find_all_by_user_id(current_user.id)
+    @cart_items = cartItems(@bids)
+    @unpaid_auctions =  unpaidAuctions(@bids)
+    @purchase_items = @cart_items + @unpaid_auctions
     @purchase = Purchase.new
 
     respond_to do |format|
@@ -13,9 +16,12 @@ class PurchasesController < ApplicationController
 
   def create
     @bids = Bid.find_all_by_user_id(current_user.id)
-    render action: "new" unless purchases_valid(@bids)
+    @cart_items = cartItems(@bids)
+    @unpaid_auctions =  unpaidAuctions(@bids)
+    @purchase_items = @cart_items + @unpaid_auctions
+    render action: "new" unless purchases_valid(@purchase_items)
 
-    @bids.each do |bid|
+    @purchase_items.each do |bid|
       @item = Item.find(bid.item_id)
 
       @purchase = Purchase.new(params[:purchase])
@@ -30,9 +36,13 @@ class PurchasesController < ApplicationController
         if @purchase.save
           format.html {
             @item.quantity = @item.quantity - @purchase.quantity
+            @item.status = 3
             @item.save
             @bid = Bid.find(bid.id)
-            @bid.destroy
+            # if for sell, delete bid instance, if for auction, save it for bidding history
+            if !@item.for_auction
+              @bid.destroy
+            end
           }
           format.json { render json: @purchase, status: :created, location: @purchase }
         else

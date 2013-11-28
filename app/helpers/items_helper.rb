@@ -63,5 +63,4 @@ module ItemsHelper
     unpaidAuctions
   end
 
-
 end
