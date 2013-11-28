@@ -21,20 +21,48 @@
             <th>Quantity</th>
             <th>Price</th>
          </tr>
-         <% @bids.each do |bid| %>
+         <% @cartItems.each do |bid| %>
             <% item = Item.find(bid.item_id) %>
-            <% if !item.for_auction || (item.for_auction && item.status == 2) %>
-             <tr>
-                <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-                <td><%= bid.quantity %></td>
-                <td><%= bid.bid_price %></td>
-                <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
-             </tr>
-            <% end %>
+            <tr>
+            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+            <td><%= bid.quantity %></td>
+            <td><%= bid.bid_price %></td>
+            <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
+            </tr>
          <% end %>
       </table>
-      <!--total price to be modified-->
-      <h4 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h4>
+    </div>
+  </div>
+
+  <% if @unpaidAuctions.size != 0 %>
+  <!-- display all the auctions items that the user won and has not pay for -->
+  <div class="" style="float: right;width: 90%">
+    <div class="span10 offset1">
+    <h4> Unpaid Auctions </h4>
+      <table class="table table-striped">
+         <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+         </tr>
+         <% @unpaidAuctions.each do |bid| %>
+            <% item = Item.find(bid.item_id) %>
+            <tr>
+            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+            <td><%= bid.quantity %></td>
+            <td><%= bid.bid_price %></td>
+            </tr>
+         <% end %>
+      </table>
+    </div>
+  </div>
+  <% end %>
+
+  <!--total price and checkout -->
+  <div class="" style="float: right;width: 90%">
+    <div class="span10 offset1">
+      <% totalPrice = total_price(@cartItems) + total_price(@unpaidAuctions)%>
+      <h4 style="color:red;" > Total Price: <%= " #{totalPrice}" %> </h4>
       <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
     </div>
   </div>

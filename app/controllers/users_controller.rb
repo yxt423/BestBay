@@ -125,8 +125,10 @@
   def cart
     @user = User.find(params[:id])
     @bids = Bid.find_all_by_user_id(current_user.id)
+    @cartItems = cartItems(@bids)
+    @unpaidAuctions =  unpaidAuctions(@bids)
 
-    if @bids.size == 0
+    if @cartItems.size + @unpaidAuctions.size == 0
       respond_to do |format|
         format.html { redirect_to items_path, notice: 'Cart Empty' }
       end

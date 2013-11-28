@@ -15,7 +15,6 @@ module ItemsHelper
   def auctionExpire?(item)
     endtime = auctionEndtime(item)
     currentTime = Time.now.in_time_zone
-
     if currentTime > endtime
       true
     else
@@ -39,4 +38,30 @@ module ItemsHelper
       end
     end
   end
+
+  # find items to show in "cart"
+  def cartItems(bids)
+    cartItems = []
+    bids.each do |bid|
+      item = Item.find(bid[:item_id])
+      if !item.for_auction
+         cartItems << bid
+      end
+    end
+    cartItems
+  end
+
+  # find items to show in "unpaid auctions"
+  def unpaidAuctions(bids)
+    unpaidAuctions = []
+    bids.each do |bid|
+      item = Item.find(bid[:item_id])
+      if bid.winner && item.for_auction && item.status == 2
+         unpaidAuctions << bid
+      end
+    end
+    unpaidAuctions
+  end
+
+
 end
