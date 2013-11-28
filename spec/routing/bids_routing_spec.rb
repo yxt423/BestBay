@@ -7,14 +7,6 @@ describe BidsController do
       get("/bids").should route_to("bids#index")
     end
 
-    it "routes to #new" do
-      get("/bids/new").should route_to("bids#new")
-    end
-
-    it "routes to #show" do
-      get("/bids/1").should route_to("bids#show", :id => "1")
-    end
-
     it "routes to #edit" do
       get("/bids/1/edit").should route_to("bids#edit", :id => "1")
     end
