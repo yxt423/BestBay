@@ -11,6 +11,8 @@ class Item < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :base_price, :category_id, :description, :image_1, :image_2, :image_3,
-                  :name, :user_id, :pic, :quantity, :view_count, :for_auction
+                  :name, :user_id, :pic, :quantity, :view_count, :for_auction,
+                  :bid_days, :bid_hours, :bid_minutes
+
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127205538) do
+ActiveRecord::Schema.define(:version => 20131127233648) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(:version => 20131127205538) do
     t.integer  "category_id"
     t.integer  "view_count"
     t.boolean  "for_auction",      :default => false
+    t.integer  "bid_days",         :default => 0
+    t.integer  "bid_hours",        :default => 0
+    t.integer  "bid_minutes",      :default => 0
   end
 
   create_table "messages", :force => true do |t|
@@ -89,15 +92,15 @@ ActiveRecord::Schema.define(:version => 20131127205538) do
     t.string   "credit_card_no"
     t.boolean  "is_seller"
     t.string   "profile_pic"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "remember_token"
     t.integer  "expiry_month"
     t.integer  "expiry_year"
     t.integer  "security_code"
     t.string   "shipping_address"
     t.boolean  "is_admin"
-    t.boolean  "deactivated",      :default => false
+    t.boolean  "deactivated",      :default => true
     t.string   "activation_token"
   end
 

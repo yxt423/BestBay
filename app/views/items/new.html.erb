@@ -28,8 +28,25 @@
 
         <%= f.hidden_field :for_auction, :value => params[:auction] %>
         <% if params[:auction] == "true" %>
+            <!--for auction: show duration inputs of bidding, mark quantity as 1-->
             <%= f.hidden_field :quantity, :value => 1 %>
+            <%= f.label :"Duration of Bid" %>
+            <table>
+              <tr>
+                <th><%= f.select :bid_days, options_for_select([0,1,2,3,4,5])%></th>
+                <th><%= f.label :"Days" %></th>
+              </tr>
+              <tr>
+                <th><%= f.select :bid_hours, options_for_select([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23])%></th>
+                <th><%= f.label :"Hours" %></th>
+              </tr>
+              <tr>
+                <th><%= f.select :bid_minutes, options_for_select([0,5,10,15,20,25,30,35,40,45,50,55])%></th>
+                <th><%= f.label :"Minutes" %></th>
+              </tr>
+            </table>
         <% else %>
+            <!--for sell: show quantity input field-->
             <%= f.label :quantity %>
             <%= f.text_field :quantity %>
         <% end %>

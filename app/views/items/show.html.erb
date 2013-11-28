@@ -40,25 +40,37 @@
               <p><%= "#{@item.view_count} views"%></p>
             </div>
 
-            <!-- Quantity -->
-            <div id="quantity">
-              <p>Available: <%= " #{@item.quantity}"%></p>
+            <% if !@item.for_auction %>
+                <!-- Quantity and buy button-->
+                <div id="quantity">
+                  <p>Available: <%= " #{@item.quantity}"%></p>
 
-              <% if signed_in? %>
-                  <% if !is_admin? && (@item.user_id != current_user.id)%>
-                      <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
-                          <%= f.label :quantity %>
-                          <%= f.text_field :quantity %>
-                              <br>
-                          <%= f.submit "Add to Cart", class: "btn btn-medium btn-primary" %>
+                  <% if signed_in? %>
+                      <% if !is_admin? && (@item.user_id != current_user.id)%>
+                          <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
+                              <%= f.label :quantity %>
+                              <%= f.text_field :quantity %>
+                                  <br>
+                              <%= f.submit "Add to Cart", class: "btn btn-medium btn-primary" %>
+                          <% end %>
                       <% end %>
+                  <% else %>
+                      <br></br>
+                      <p> Sign in to buy item</p>
                   <% end %>
-              <% else %>
-                  <br></br>
-                  <p> Sign In to Buy Item</p>
-              <% end %>
+                </div>
 
-            </div>
+            <% else %>
+                <!-- bid button -->
+                <% if signed_in? %>
+                    <% if !is_admin? && (@item.user_id != current_user.id)%>
+                        <%= link_to "Place a Bid", new_bid_path(:item_id => @item.id), class: "btn btn-medium btn-primary" %>
+                    <% end %>
+                <% else %>
+                    <br></br>
+                    <p> Sign in to bid on this item</p>
+                <% end %>
+            <% end %>
 
             <!-- Links to buy or bid for the item -->
             <div id="links_for_item">
