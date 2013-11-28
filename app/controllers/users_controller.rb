@@ -66,6 +66,7 @@
   def create
     @user = User.new(params[:user])
     @user.is_admin = false
+    
     respond_to do |format|
       if @user.save
         @user.activate_new_user
@@ -76,7 +77,7 @@
 
           if @user.is_seller
             store_location
-            redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
+	    redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
           elsif @user.deactivated?
             redirect_to signin_path, notice: 'You need to activate your account before you login. Please check your mail'
           else
@@ -180,7 +181,11 @@
       new_user.save
       sign_in new_user
       
-      redirect_to new_user, notice: 'Welcome to BestBay! Your account has been activated'       
+      if new_user.is_seller
+        redirect_to new_creditcard_path, notice: 'Welcome to BestBay! Please provide your creditcard details to be able to sell'	
+      else
+        redirect_to new_user, notice: 'Welcome to BestBay! Your account has been activated'       
+      end
     else
       redirect_to items_path, notice: 'Invalid activation link provided. Please check mail again'
     end

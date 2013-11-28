@@ -2,6 +2,11 @@ class CreditcardsController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
 
   def new
+    if current_user == nil 
+      redirect_to "/signin", notice: "Please check your email to activate your account and proceed further."
+      return
+    end
+
     @creditcard = current_user.creditcards.build
 
     respond_to do |format|
