@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   before_filter :check_credit_card_info, only: [:new, :create, :destroy]
 
   def index
+    checkItemStatus(Item.all)
+
     @cats = Category.all
     @catid = params[:cat]
     if @catid == NIL
@@ -13,21 +15,7 @@ class ItemsController < ApplicationController
       @items = Item.find_all_by_category_id(@catid)
     end
 
-    @items.each do |item|
-      if item.for_auction && item.status == 1 && auctionExpire?(item)
-        closeAuction(item)
-      end
-    end
-
-    if is_admin? ==  false || current_user.nil?
-      @items.each do |item|
-        if item.deactivated == true # do not show deactivated items
-          @items.delete(item)
-        elsif item.for_auction && item.status != 1  # do not show closed auctions
-          @items.delete(item)
-        end
-      end
-    end
+    @itemsToShow = itemsToShow(@items)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -39,6 +27,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   def show
     @item = Item.find(params[:id])
+    checkItemStatus(@item)
 
     #update the viewed times counter of item
     @item.view_count = @item.view_count.to_i.next

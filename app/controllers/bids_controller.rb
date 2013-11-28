@@ -6,7 +6,6 @@ class BidsController < ApplicationController
       @bid = current_user.bids.build(params[:bid])
       if validBid?(@bid)
         @item = Item.find(params[:bid][:item_id])
-        #@bid.item_id = @item.id
         @item.highest_bid = @bid.bid_price
         @item.save
         @bid.quantity = 1

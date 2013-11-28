@@ -7,6 +7,26 @@ module ItemsHelper
     end
   end
 
+  def itemsToShow(items)
+    itemsToShow = []
+    if is_admin?
+      itemsToShow = items
+    else
+      items.each do |item|
+        if !item.deactivated
+          if item.for_auction && item.status == 1  # do not show closed auctions
+            itemsToShow << item
+          elsif !item.for_auction && item.status == 0   # do not show stockout items (for sell)
+            itemsToShow << item
+          end
+        end
+      end
+    end
+    itemsToShow
+  end
+
+  ##### Functions for auction status #####
+
   def auctionEndtime(item)
     endtime = item.created_at
     endtime = endtime + item.bid_days.days + item.bid_hours.hours + item.bid_minutes.minutes
@@ -22,11 +42,21 @@ module ItemsHelper
     end
   end
 
+  def checkItemStatus(items)
+    items.each do |item|
+      if item.for_auction && item.status == 1 && auctionExpire?(item)
+        closeAuction(item)
+      end
+    end
+  end
+
   def closeAuction(item)
-    if item.highest_bid == 0
+    if item.highest_bid == 0  # no bider
       item.status = 3
       item.save
+      return
     end
+    # mark the winner
     @bids = Bid.find_all_by_item_id(item.id)
     @bids.each do |bid|
       if bid.bid_price == item.highest_bid
@@ -38,6 +68,8 @@ module ItemsHelper
       end
     end
   end
+
+  ##### Functions for My cart page #####
 
   # find items to show in "cart"
   def cartItems(bids)
@@ -62,5 +94,6 @@ module ItemsHelper
     end
     unpaidAuctions
   end
+
 
 end
