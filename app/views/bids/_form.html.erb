@@ -4,6 +4,7 @@
     <%= f.text_field :bid_price %>
 
     <%= f.hidden_field :item_id, :value => @item.id %>
+    <%= f.hidden_field :quantity, :value => 1 %>
     <br><br/>
     <%= f.submit "Submit Bid", class: "btn btn-medium btn-primary" %>
 <% end %>

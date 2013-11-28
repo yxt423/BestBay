@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127233648) do
+ActiveRecord::Schema.define(:version => 20131128061120) do
 
   create_table "bids", :force => true do |t|
     t.float    "bid_price"
     t.integer  "user_id"
     t.integer  "item_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "quantity"
+    t.boolean  "winner",     :default => false
   end
 
   create_table "categories", :force => true do |t|
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20131127233648) do
     t.integer  "bid_days",         :default => 0
     t.integer  "bid_hours",        :default => 0
     t.integer  "bid_minutes",      :default => 0
+    t.integer  "status",           :default => 0
+    t.integer  "highest_bid",      :default => 0
   end
 
   create_table "messages", :force => true do |t|

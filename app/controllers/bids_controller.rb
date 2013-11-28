@@ -46,48 +46,46 @@ class BidsController < ApplicationController
 
     i = 0
     while i < @bids.size do
-    if @bids[i].user_id == current_user.id
-    break
-    end
-    i += 1
+      if @bids[i].user_id == current_user.id
+        break
+      end
+      i += 1
     end
 
     if @bids.size != 0  && i < @bids.size
       @total += @bids[i].quantity
       if @total <= @item.quantity
-      @bids[i].update_attribute(:quantity,(@total))
-      respond_to do |format|
-      format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
-      format.json { render json: @bid, status: :created, location: @bid }
-      end
-      else
-      respond_to do |format|
-        format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
-      end
-    else
-    @bid.bid_price = @item.base_price
-    @bid.item_id = @item.id
-    @bid.user_id = current_user.id
-    if @total <= @item.quantity
-    respond_to do |format|
-      if @bid.save
-        #format.html { redirect_to current_user, notice: 'New item purchased!' }
-        format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Item added to cart!' }
-
+        @bids[i].update_attribute(:quantity,(@total))
+        respond_to do |format|
+        format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
         format.json { render json: @bid, status: :created, location: @bid }
+        end
       else
-        format.html { redirect_to item_path, notice: 'Failed to process' }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
+        respond_to do |format|
+          format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
       end
-    end
     else
-      respond_to do |format|
-        format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
+      @bid.bid_price = @item.base_price
+      @bid.item_id = @item.id
+      @bid.user_id = current_user.id
+      if @total <= @item.quantity
+        respond_to do |format|
+          if @bid.save
+            format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Item added to cart!' }
+            format.json { render json: @bid, status: :created, location: @bid }
+          else
+            format.html { redirect_to item_path, notice: 'Failed to process' }
+            format.json { render json: @bid.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to item_path, notice: 'Cart size cant be more than inventory!!!' }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
       end
-    end
     end
   end
 end

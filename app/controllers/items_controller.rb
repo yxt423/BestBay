@@ -13,9 +13,17 @@ class ItemsController < ApplicationController
       @items = Item.find_all_by_category_id(@catid)
     end
 
+    @items.each do |item|
+      if auctionExpire?(item)
+        closeAuction(item)
+      end
+    end
+
     if is_admin? ==  false || current_user.nil?
       @items.each do |item|
-        if item.deactivated == true
+        if item.deactivated == true # do not show deactivated items
+          @items.delete(item)
+        elsif item.auction_status != 1  # do not show closed auctions
           @items.delete(item)
         end
       end

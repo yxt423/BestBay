@@ -12,7 +12,9 @@ class Item < ActiveRecord::Base
 
   attr_accessible :base_price, :category_id, :description, :image_1, :image_2, :image_3,
                   :name, :user_id, :pic, :quantity, :view_count, :for_auction,
-                  :bid_days, :bid_hours, :bid_minutes
+                  :bid_days, :bid_hours, :bid_minutes,
+                  :status, # 0: for sell, 1: started auction, 2: closed auction(not checked out yet), 3: checked out
+                  :created_at, :updated_at
 
 
 end

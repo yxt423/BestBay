@@ -1,12 +1,19 @@
 <%= image_tag item.pic.url(:thumb) %><br/>
 
-<% if is_admin? && item.deactivated == true%>
-    <%= link_to "#{item.name} (Deactivated)", item %>
+<% if is_admin? && auctionExpire?(item) %>
+    <% @string = "(Auction closed)" %>
 <% else %>
-    <%= link_to "#{item.name} ", item %>
+    <% @string = "" %>
+<% end %>
+
+<% if is_admin? && item.deactivated == true%>
+    <%= link_to "#{item.name} #{@string} (Deactivated)", item %>
+<% else %>
+    <%= link_to "#{item.name} #{@string}", item %>
 <% end %>
 
 <% if hotItem(item) %>
     <%= image_tag("hot.jpg", alt: "hot") %>
 <% end %>
+
 <br/>
