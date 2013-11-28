@@ -53,6 +53,8 @@ NaVi::Application.routes.draw do
     member do
       get 'buy'
       post 'buy'
+      get 'create'
+      post 'create'
     end
   end
   resources :sessions, only: [:new, :create, :destroy]

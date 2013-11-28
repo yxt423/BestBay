@@ -1,18 +1,20 @@
 <% provide(:title, @user.fname) %>
 
 <div class="row">
+
   <div class="" style="float: left;width: 10%">
-  <section>
+    <section>
       <h1>
         <%= gravatar_for @user %>
         <%= @user.fname %>
       </h1>
     </section>
-    </div>
-    <div class="" style="float: right;width: 90%">
+  </div>
+
   <!-- display all the items that the user has added to cart -->
+  <div class="" style="float: right;width: 90%">
     <div class="span10 offset1">
-    <h4> Cart </h4>
+    <h4> My Shopping Cart </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
@@ -20,18 +22,21 @@
             <th>Price</th>
          </tr>
          <% @bids.each do |bid| %>
-         <tr>
             <% item = Item.find(bid.item_id) %>
-            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= bid.quantity %></td>
-            <td><%= bid.bid_price %></td>
-            <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
-         </tr>
+            <% if !item.for_auction %>
+             <tr>
+                <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+                <td><%= bid.quantity %></td>
+                <td><%= bid.bid_price %></td>
+                <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
+             </tr>
+            <% end %>
          <% end %>
       </table>
+      <!--total price to be modified-->
       <h4 style="color:red;" > Total Price: <%= " #{total_price(@bids)}" %> </h4>
       <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
-
     </div>
   </div>
+
 </div>

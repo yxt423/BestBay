@@ -1,4 +1,4 @@
-<% provide(:title, "#{@item.name} #{@item.description}") %>
+<% provide(:title, "#{@item.name}") %>
 
 <div class="row">
 
@@ -26,7 +26,7 @@
                 </div>
             <% else %>
                 <div id="label_base_price">
-                  <% if @highest_bid != 0%>
+                  <% if @item.highest_bid != 0%>
                      <p>Highest Bid : <%= "$ #{@item.highest_bid}"%></p>
                   <% end %>
                   <p>Base Price : <%= "$ #{@item.base_price}"%></p>
@@ -72,7 +72,12 @@
                     <p><%= "Auction will end at: #{auctionEndtime(@item)}"%></p>
                     <% if signed_in? %>
                         <% if !is_admin? && (@item.user_id != current_user.id)%>
-                            <%= link_to "Place a Bid", new_bid_path(:item_id => @item.id), class: "btn btn-medium btn-primary" %>
+                            <%= form_for @bid, :url => new_bid_path do |f| %>
+                              <%= f.label :bid_price %>
+                              <%= f.text_field :bid_price %>
+                              <%= f.hidden_field :item_id, :value => @item.id %><br>
+                              <%= f.submit "Place a Bid", class: "btn btn-medium btn-primary" %>
+                            <% end %>
                         <% end %>
                     <% else %>
                         <br></br>

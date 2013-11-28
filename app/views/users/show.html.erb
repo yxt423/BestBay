@@ -12,16 +12,18 @@
 
   <!-- display all the items that the user has created -->
   <div class="" style="float: right;width: 90%">
+
   <% if is_admin? %>
     <div class="span10 offset1">
       <!-- to be modified -->
         <%= render 'deactivate_user_form' %>
-        <%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>
-        <%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>
+        <!--<%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>-->
+        <!--<%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>-->
     </div>
     <br></br>
   <% end %>
 
+  <!-- display user's items (for sell and auction) -->
   <% if is_seller? %>
     <div class="span10 offset1">
     <h4> My items </h4>
@@ -56,23 +58,26 @@
     </div>
   <% end %>
 
-  <!-- display all the items that the user has bid on -->
+    <!-- display all the items that the user has bid on -->
     <div class="span10 offset1">
-    <h4> Cart </h4>
+    <h4> Bidding History </h4>
       <table class="table table-striped">
          <tr>
             <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th>Bid price</th>
+            <th> </th>
          </tr>
          <% @bids.each do |bid| %>
-         <tr>
-            <% item = Item.find(bid.item_id) %>
-            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= bid.quantity %></td>
-            <td><%= item.base_price %></td>
-            <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
-         </tr>
+            <% @item = Item.find(bid.item_id) %>
+            <% if @item.for_auction %>
+                 <tr>
+                    <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
+                    <td><%= bid.bid_price %></td>
+                    <td><% if bid.winner %>
+                              winner
+                        <% end %></td>
+                 </tr>
+            <% end %>
          <% end %>
       </table>
     </div>
@@ -98,5 +103,8 @@
          <% end %>
       </table>
     </div>
+
+
    </div>
+
 </div>
