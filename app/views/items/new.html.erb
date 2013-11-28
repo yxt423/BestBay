@@ -57,7 +57,12 @@
           <%= f.file_field :pic %>
         </p>
 
-        <%= f.submit "Submit Item for Sale", class: "btn btn-medium btn-primary" %>
+        <% if params[:auction] == "true" %>
+            <%= f.submit "Submit Item for Auction", class: "btn btn-medium btn-primary" %>
+        <% else %>
+            <%= f.submit "Submit Item for Sale", class: "btn btn-medium btn-primary" %>
+        <% end %>
+
     <% end %>
   </div>
 </div>
