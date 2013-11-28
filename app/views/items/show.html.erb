@@ -19,15 +19,19 @@
 
         <div style="float:right; width:60%">       <!-- Right div -->
           <div id="item_details">
-            <div id="label_base_price">
-              <p>Base Price : <%= "$ #{@item.base_price}"%></p>
-            </div>
 
-            <!--<% if @highest_bid != nil%>-->
-                <!--<div id="label_bid_price">-->
-                  <!--<p>Latest Bid Price : <%= "$ #{@highest_bid.bid_price}"%></p>-->
-                <!--</div>-->
-            <!--<% end %>-->
+            <% if !@item.for_auction %>
+                <div id="label_base_price">
+                  <p>Price : <%= "$ #{@item.base_price}"%></p>
+                </div>
+            <% else %>
+                <div id="label_base_price">
+                  <% if @highest_bid != 0%>
+                     <p>Highest Bid : <%= "$ #{@item.highest_bid}"%></p>
+                  <% end %>
+                  <p>Base Price : <%= "$ #{@item.base_price}"%></p>
+                </div>
+            <% end %>
 
             <div id="item_desc">
               <p><%= "Description: #{@item.description}"%></p>
@@ -41,7 +45,7 @@
             </div>
 
             <% if !@item.for_auction %>
-                <!-- Quantity and buy button-->
+                <!-- for sell: Quantity and buy button-->
                 <div id="quantity">
                   <p>Available: <%= " #{@item.quantity}"%></p>
 
@@ -61,26 +65,24 @@
                 </div>
 
             <% else %>
-                <!-- bid button -->
-                <% if signed_in? %>
-                    <% if !is_admin? && (@item.user_id != current_user.id)%>
-                        <%= link_to "Place a Bid", new_bid_path(:item_id => @item.id), class: "btn btn-medium btn-primary" %>
+                <!-- for auction: auction status & bid button -->
+
+                <% if @item.status == 1 %>
+                     <!-- for ongoing auction  -->
+                    <p><%= "Auction will end at: #{auctionEndtime(@item)}"%></p>
+                    <% if signed_in? %>
+                        <% if !is_admin? && (@item.user_id != current_user.id)%>
+                            <%= link_to "Place a Bid", new_bid_path(:item_id => @item.id), class: "btn btn-medium btn-primary" %>
+                        <% end %>
+                    <% else %>
+                        <br></br>
+                        <p> Sign in to bid on this item</p>
                     <% end %>
                 <% else %>
-                    <br></br>
-                    <p> Sign in to bid on this item</p>
+                    <p><%= "Auction has closed"%></p>
                 <% end %>
+
             <% end %>
-
-            <!-- Links to buy or bid for the item -->
-            <div id="links_for_item">
-
-              <!-- HIDING THE BID BUTTON FOR THE DEMO   -->
-
-              <!--%= link_to "Bid", new_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %>  -->
-
-              <!--%= link_to "Buy", buy_bid_path(:item_id => @item.id), class: "btn btn-large btn-primary" %-->
-            </div>
 
             <!-- Deactivate/Activate Item-->
             <% if is_admin? %>

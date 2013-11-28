@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     end
 
     @items.each do |item|
-      if auctionExpire?(item)
+      if auctionExpire(item)
         closeAuction(item)
       end
     end
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
       @items.each do |item|
         if item.deactivated == true # do not show deactivated items
           @items.delete(item)
-        elsif item.auction_status != 1  # do not show closed auctions
+        elsif item.for_auction && item.status != 1  # do not show closed auctions
           @items.delete(item)
         end
       end
@@ -80,6 +80,7 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.items.build(params[:item])
     @item.view_count = -1
+    @item.highest_bid = 0
 
     respond_to do |format|
       if @item.save

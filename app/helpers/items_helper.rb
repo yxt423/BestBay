@@ -7,9 +7,13 @@ module ItemsHelper
     end
   end
 
-  def auctionExpire?(item)
+  def auctionEndtime(item)
     endtime = item.created_at
     endtime = endtime + item.bid_days.days + item.bid_hours.hours + item.bid_minutes.minutes
+  end
+
+  def auctionExpire(item)
+    endtime = auctionEndtime(item)
     currentTime = Time.now.in_time_zone
 
     if currentTime > endtime
@@ -20,7 +24,8 @@ module ItemsHelper
   end
 
   def closeAuction(item)
-    @item.status = 2
+    item.status = 2
+    item.save
     #@bids = Bids.find_all_by_item_id(@item.id)
   end
 end
