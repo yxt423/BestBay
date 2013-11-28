@@ -29,18 +29,32 @@
          <tr>
             <th>Item Name</th>
             <th>Base Price</th>
+            <th>Status</th>
             <th>Options</th>
          </tr>
-         <% @items.each do |item| %> 
+         <% @items.each do |item| %>
+         <% case item.status
+              when 0
+                @statusStr = "for sell"
+              when 1
+                @statusStr = "ongoing auction"
+              when 2
+                @statusStr = "closed auction"
+              when 3
+                @statusStr = "closed auction"
+            end %>
          <tr>
             <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
             <td><%= item.base_price %></td>
-            <td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>
+            <td><%= "#{@statusStr}" %></td>
+            <td><% if !item.for_auction %>
+              <%= link_to 'Remove', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %>
+                <% end %></td>
          </tr>
          <% end %> 
       </table>
     </div>
-    <% end %>
+  <% end %>
 
   <!-- display all the items that the user has bid on -->
     <div class="span10 offset1">

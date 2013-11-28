@@ -1,6 +1,6 @@
 <%= image_tag item.pic.url(:thumb) %><br/>
 
-<% if is_admin? && auctionExpire?(item) %>
+<% if is_admin? && item.for_auction && auctionExpire?(item) %>
     <% @string = "(Auction closed)" %>
 <% else %>
     <% @string = "" %>

@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
     end
 
     @items.each do |item|
-      if auctionExpire(item)
+      if item.for_auction && auctionExpire?(item)
         closeAuction(item)
       end
     end
