@@ -19,8 +19,10 @@
                 <li><%= link_to "Sell", new_item_path(:auction => false ) %></li>
                 <li><%= link_to "Start an Auction", new_item_path(:auction => true ) %></li>
                 <li id="fat-menu" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Account<b class="caret"></b> </a>
-                    <ul class="dropdown-menu">
+                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                      Account <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
                         <li><%= link_to "Profile", current_user %></li>
                         <li><%= link_to "Settings", edit_user_path(current_user) %></li>
                         <% if (current_user.creditcards.count == 0) %>
@@ -29,7 +31,7 @@
                             <li><%= link_to "Credit Card", edit_creditcard_path(@user = current_user) %></li>
                         <% end %>
                         <li class="divider"></li>
-                    <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+                        <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
                     </ul>
                 </li>
                 <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" %></li>
