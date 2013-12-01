@@ -231,3 +231,15 @@ input {
     }
   }
 }
+
+.alert {
+  border-radius: 4px;
+  background-color: #f9f2f4;
+}
+.alert-success {
+  color: seagreen;
+}
+
+.alert-error {
+  color: firebrick;
+}
