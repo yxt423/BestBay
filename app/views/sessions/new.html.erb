@@ -1,18 +1,18 @@
 <%= provide(:title, "Sign in")%>
 <div class="row">
-  <div class="" style="float: left;width: 40%">
+  <div>
     <h2>Sign in</h2>
   </div>
-  <div class="" style="text-align: left;float: right;width: 60%">
+  <div class="container">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, class:"form-control" %>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class:"form-control" %>
       <br>
-      <%= f.submit "Sign in", class: "btn btn-medium btn-primary" %>
+      <%= f.submit "Sign in", class: "btn btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", signup_path %></p>

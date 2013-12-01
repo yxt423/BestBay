@@ -50,9 +50,9 @@ group :development do
 #  gem 'ruby-debug-base19x'
 #  gem 'ruby-debug-ide'
 end
-
-gem 'bootstrap','0.0.1'
-gem 'bootstrap-sass', '2.3.2.0'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+    :github => 'anjlab/bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.0.2.0'
 gem 'bootstrap-will_paginate', '0.0.9'
 
 group :test do
