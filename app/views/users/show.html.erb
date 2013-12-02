@@ -1,17 +1,18 @@
 <% provide(:title, @user.fname) %>
 
 <div class="row">
-  <div class="" style="float: left;width: 10%">
+  <div class="col-md-3 hidden-xs" >
     <section>
-      <h1>
-        <%= gravatar_for @user %>
+      <h1 style="float: none"><%= gravatar_for @user %> </h1>
+      <br />
+      <h1 style="float: left; clear: both">
         <%= @user.fname %>
       </h1>
     </section>
    </div>
 
   <!-- display all the items that the user has created -->
-  <div class="" style="float: right;width: 90%">
+  <div class="col-md-9" >
 
   <% if is_admin? %>
     <div class="span10 offset1">

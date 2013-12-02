@@ -1,26 +1,27 @@
 <% provide(:title, "Edit user") %>
 <div class="row">
-  <div class="" style="float: left;width: 40%">
-<h2>Update your info</h2>
-   </div>
+  <div class="col-md-3 hidden-xs">
 
-  <div class="" style="float: right;width: 60%">
+  </div>
+
+  <div class="col-md-6 container">
+    <h2>Update your info</h2>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :'First Name' %>
-      <%= f.text_field :fname %>
+      <%= f.text_field :fname, class:"form-control" %>
 
       <%= f.label :'Last Name' %>
-      <%= f.text_field :lname %>
+      <%= f.text_field :lname, class:"form-control" %>
 
       <%= f.label :'Email' %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, class:"form-control" %>
 
       <%= f.label :'Shipping Address' %>
-      <%= f.text_field :shipping_address %>
+      <%= f.text_field :shipping_address, class:"form-control" %>
 
       <%= f.label :'Phone No.' %>
-      <%= f.text_field :phone_no %>
+      <%= f.text_field :phone_no, class:"form-control" %>
       <br>
       <%= f.submit "Save changes", class: "btn btn-medium btn-primary" %>
 
@@ -31,6 +32,9 @@
     <% else %>
         <%= link_to 'Add Credit Card Information', new_creditcard_path %>
     <% end %>
+
+  </div>
+  <div class="col-md-3 hidden-xs">
 
   </div>
 </div>
