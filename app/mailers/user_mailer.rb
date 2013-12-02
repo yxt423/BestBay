@@ -3,6 +3,7 @@ class UserMailer < ActionMailer::Base
   def welcome_email(user)
     @user = user
     @url  = ["http://localhost:3000/users/activate_new_user?activation_token=",@user.activation_token].join("")
+    @actual_url = ["http://bbnavi.herokuapp.com/users/activate_new_user?activation_token=",@user.activation_token].join("")
     mail(to: @user.email, subject: 'Welcome to Best Bay')
   end
 
