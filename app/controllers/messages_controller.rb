@@ -25,7 +25,7 @@ class MessagesController < ApplicationController
         end
 
         format.html {
-            redirect_to users_path, notice: 'Email sent to users!'
+          redirect_to users_path, notice: 'Email sent to users!'
         }
         format.json { render json: @message, status: :created, location: @message }
       else

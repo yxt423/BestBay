@@ -3,31 +3,31 @@
 
 <div class="row">
   <div class="span6 offset3">
-        <%= form_for(@item) do |f| %>
-            <%= render 'shared/error_messages', object: f.object %>
-            <%= f.label :name %>
-            <%= f.text_field :name %>
+    <%= form_for(@item) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-            <%= f.label :category_id %>
-            <% arr = @cats.map { |c| [c.name, c.id ]}      %>
-            <%= f.select :category_id, options_for_select(arr)%>
+    <%= f.label :category_id %>
+    <% arr = @cats.map { |c| [c.name, c.id ]}      %>
+    <%= f.select :category_id, options_for_select(arr)%>
 
-            <%= f.label :description %>
-            <%= f.text_area :description %>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
 
-            <%= f.label :base_price %>
-            <%= f.text_field :base_price %>
+    <%= f.label :base_price %>
+    <%= f.text_field :base_price %>
 
-            <%= f.label :image1 %>
-            <%= f.file_field :image1 %>
+    <%= f.label :image1 %>
+    <%= f.file_field :image1 %>
 
-            <%= f.label :image2 %>
-            <%= f.file_field :image2 %>
+    <%= f.label :image2 %>
+    <%= f.file_field :image2 %>
 
-            <%= f.label :image3 %>
-            <%= f.file_field :image3 %>
+    <%= f.label :image3 %>
+    <%= f.file_field :image3 %>
 
-            <%= f.submit "Submit Item for Sale", class: "btn btn-large btn-primary" %>
-        <% end %>
+    <%= f.submit "Submit Item for Sale", class: "btn btn-large btn-primary" %>
+  <% end %>
   </div>
 </div>

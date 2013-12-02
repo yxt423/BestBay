@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
     #TO BUY AN ITEM :-
     if signed_in?
-    @bid = current_user.bids.new
+      @bid = current_user.bids.new
     end
     respond_to do |format|
       format.html # show.html.erb
@@ -146,8 +146,8 @@ class ItemsController < ApplicationController
   end
 
   private
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
 end

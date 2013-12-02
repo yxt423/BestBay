@@ -2,7 +2,7 @@ class CreditcardsController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :destroy]
 
   def new
-    if current_user == nil 
+    if current_user == nil
       redirect_to "/signin", notice: "Please check your email to activate your account and proceed further."
       return
     end
@@ -44,10 +44,10 @@ class CreditcardsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @creditcard.errors, status: :unprocessable_entity }
       end
-    end    
+    end
 
   end
-  
+
   def update
     @creditcard = current_user.creditcards.find(params[:id])
     respond_to do |format|

@@ -2,7 +2,6 @@ class CategoriesController < ApplicationController
 
   before_filter :signed_in_user
   before_filter :is_admin?
-
   # GET /categories
   # GET /categories.json
   def index

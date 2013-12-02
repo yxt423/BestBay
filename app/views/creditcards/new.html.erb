@@ -1,27 +1,27 @@
 <% provide(:title, "Enter credit card details") %>
 <div class="row">
   <div class="" style="float: left;width: 40%">
-  <h2>Enter credit card details</h2>
+    <h2>Enter credit card details</h2>
   </div>
 
   <div class="" style="float: right;width: 60%">
     <%= form_for (@creditcard) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+      <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :"Credit Card Number" %>
-        <%= f.text_field :credit_card_no %>
+    <%= f.label :"Credit Card Number" %>
+    <%= f.text_field :credit_card_no %>
 
-        <%= f.label :'Valid through - Month' %>
-        <%= f.select :expiry_month, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12])%>
+    <%= f.label :'Valid through - Month' %>
+    <%= f.select :expiry_month, options_for_select([1,2,3,4,5,6,7,8,9,10,11,12])%>
 
-        <%= f.label :"Valid through - Year" %>
-        <%= f.select :expiry_year, options_for_select([2013,2014,2015,2016,2017,2018,2019,2020])%>
+    <%= f.label :"Valid through - Year" %>
+    <%= f.select :expiry_year, options_for_select([2013,2014,2015,2016,2017,2018,2019,2020])%>
 
-        <%= f.label :"Security Code" %>
-        <%= f.password_field :security_code %>
-        </br>
-        <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
-    <% end %>
+    <%= f.label :"Security Code" %>
+    <%= f.password_field :security_code %>
+    </br>
+    <%= f.submit "Submit", class: "btn btn-medium btn-primary" %>
+  <% end %>
 
   </div>
 </div>

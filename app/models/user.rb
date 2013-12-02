@@ -6,18 +6,18 @@ class User < ActiveRecord::Base
   has_many :purchases
 
   attr_accessible :email, :fname,:lname, :password_confirmation,:password,
-                  :address, :phone_no,:profile_pic ,
-                  :is_seller,  :is_admin,
-                  :credit_card_no, :expiry_month,:expiry_year,:security_code,
-                  :shipping_address, :deactivated, :activation_token
+    :address, :phone_no,:profile_pic ,
+    :is_seller,  :is_admin,
+    :credit_card_no, :expiry_month,:expiry_year,:security_code,
+    :shipping_address, :deactivated, :activation_token
 
   validates :fname,  presence: true, length: { maximum: 50 }
   validates :lname,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   validates :password,
-            :length => { minimum: 6 },
-            :if => :password
+    :length => { minimum: 6 },
+    :if => :password
 
   has_secure_password
 
@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
 
   private
 
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
 
 end

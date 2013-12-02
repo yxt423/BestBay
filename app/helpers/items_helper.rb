@@ -40,14 +40,14 @@ module ItemsHelper
   def itemStatusStr(item)
     item_status_str = ""
     case item.status
-      when 0
-        item_status_str = "for sell"
-      when 1
-        item_status_str = "ongoing auction"
-      when 2
-        item_status_str = "auction closed (waiting for payment)"
-      when 3
-        item_status_str = "auction closed"
+    when 0
+      item_status_str = "for sell"
+    when 1
+      item_status_str = "ongoing auction"
+    when 2
+      item_status_str = "auction closed (waiting for payment)"
+    when 3
+      item_status_str = "auction closed"
     end
     item_status_str
   end
@@ -132,7 +132,7 @@ module ItemsHelper
     bids.each do |bid|
       item = Item.find(bid[:item_id])
       if !item.for_auction
-         cartItems << bid
+        cartItems << bid
       end
     end
     cartItems
@@ -144,7 +144,7 @@ module ItemsHelper
     bids.each do |bid|
       item = Item.find(bid[:item_id])
       if bid.winner && item.for_auction && item.status == 2
-         unpaidAuctions << bid
+        unpaidAuctions << bid
       end
     end
     unpaidAuctions

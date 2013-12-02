@@ -8,30 +8,30 @@
     <h2>Update your info</h2>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :'First Name' %>
-      <%= f.text_field :fname, class:"form-control" %>
+    <%= f.label :'First Name' %>
+    <%= f.text_field :fname, class:"form-control" %>
 
-      <%= f.label :'Last Name' %>
-      <%= f.text_field :lname, class:"form-control" %>
+    <%= f.label :'Last Name' %>
+    <%= f.text_field :lname, class:"form-control" %>
 
-      <%= f.label :'Email' %>
-      <%= f.text_field :email, class:"form-control" %>
+    <%= f.label :'Email' %>
+    <%= f.text_field :email, class:"form-control" %>
 
-      <%= f.label :'Shipping Address' %>
-      <%= f.text_field :shipping_address, class:"form-control" %>
+    <%= f.label :'Shipping Address' %>
+    <%= f.text_field :shipping_address, class:"form-control" %>
 
-      <%= f.label :'Phone No.' %>
-      <%= f.text_field :phone_no, class:"form-control" %>
-      <br>
-      <%= f.submit "Save changes", class: "btn btn-medium btn-primary" %>
+    <%= f.label :'Phone No.' %>
+    <%= f.text_field :phone_no, class:"form-control" %>
+    <br>
+    <%= f.submit "Save changes", class: "btn btn-medium btn-primary" %>
 
-    <% end %>
+  <% end %>
 
     <% if @user.creditcards.count >= 1 %>
-        <%= link_to 'Edit Credit Card Information', edit_creditcard_path %>
-    <% else %>
-        <%= link_to 'Add Credit Card Information', new_creditcard_path %>
-    <% end %>
+      <%= link_to 'Edit Credit Card Information', edit_creditcard_path %>
+  <% else %>
+      <%= link_to 'Add Credit Card Information', new_creditcard_path %>
+  <% end %>
 
   </div>
   <div class="col-md-3 hidden-xs">

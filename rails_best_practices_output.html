@@ -57,7 +57,7 @@
       to see more useful Rails Best Practices.
     </p>
     <p>
-        Found 23 warnings.
+        Found 99 warnings.
     </p>
     <table>
           <tr>
@@ -70,8 +70,22 @@
                 />&nbsp;<label for="RemoveEmptyHelpersReview">Remove Empty Helpers</label>
               </td>
               <td>
-                <input type="checkbox" class="error-type" id="ReplaceInstanceVariableWithLocalVariableReview" value="ReplaceInstanceVariableWithLocalVariableReview"
-                />&nbsp;<label for="ReplaceInstanceVariableWithLocalVariableReview">Replace Instance Variable With Local Variable</label>
+                <input type="checkbox" class="error-type" id="SimplifyRenderInControllersReview" value="SimplifyRenderInControllersReview"
+                />&nbsp;<label for="SimplifyRenderInControllersReview">Simplify Render In Controllers</label>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                <input type="checkbox" class="error-type" id="MoveCodeIntoControllerReview" value="MoveCodeIntoControllerReview"
+                />&nbsp;<label for="MoveCodeIntoControllerReview">Move Code Into Controller</label>
+              </td>
+              <td>
+                <input type="checkbox" class="error-type" id="RemoveUnusedMethodsInControllersReview" value="RemoveUnusedMethodsInControllersReview"
+                />&nbsp;<label for="RemoveUnusedMethodsInControllersReview">Remove Unused Methods In Controllers</label>
+              </td>
+              <td>
+                <input type="checkbox" class="error-type" id="SimplifyRenderInViewsReview" value="SimplifyRenderInViewsReview"
+                />&nbsp;<label for="SimplifyRenderInViewsReview">Simplify Render In Views</label>
               </td>
           </tr>
           <tr>
@@ -80,12 +94,26 @@
                 />&nbsp;<label for="MoveCodeIntoHelperReview">Move Code Into Helper</label>
               </td>
               <td>
-                <input type="checkbox" class="error-type" id="RemoveUnusedMethodsInControllersReview" value="RemoveUnusedMethodsInControllersReview"
-                />&nbsp;<label for="RemoveUnusedMethodsInControllersReview">Remove Unused Methods In Controllers</label>
+                <input type="checkbox" class="error-type" id="RemoveUnusedMethodsInHelpersReview" value="RemoveUnusedMethodsInHelpersReview"
+                />&nbsp;<label for="RemoveUnusedMethodsInHelpersReview">Remove Unused Methods In Helpers</label>
               </td>
               <td>
-                <input type="checkbox" class="error-type" id="SimplifyRenderInControllersReview" value="SimplifyRenderInControllersReview"
-                />&nbsp;<label for="SimplifyRenderInControllersReview">Simplify Render In Controllers</label>
+                <input type="checkbox" class="error-type" id="UseModelAssociationReview" value="UseModelAssociationReview"
+                />&nbsp;<label for="UseModelAssociationReview">Use Model Association</label>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                <input type="checkbox" class="error-type" id="MoveModelLogicIntoModelReview" value="MoveModelLogicIntoModelReview"
+                />&nbsp;<label for="MoveModelLogicIntoModelReview">Move Model Logic Into Model</label>
+              </td>
+              <td>
+                <input type="checkbox" class="error-type" id="ReplaceComplexCreationWithFactoryMethodReview" value="ReplaceComplexCreationWithFactoryMethodReview"
+                />&nbsp;<label for="ReplaceComplexCreationWithFactoryMethodReview">Replace Complex Creation With Factory Method</label>
+              </td>
+              <td>
+                <input type="checkbox" class="error-type" id="UseMultipartAlternativeAsContentTypeOfEmailReview" value="UseMultipartAlternativeAsContentTypeOfEmailReview"
+                />&nbsp;<label for="UseMultipartAlternativeAsContentTypeOfEmailReview">Use Multipart Alternative As Content Type Of Email</label>
               </td>
           </tr>
           <tr>
@@ -94,12 +122,12 @@
                 />&nbsp;<label for="ProtectMassAssignmentReview">Protect Mass Assignment</label>
               </td>
               <td>
-                <input type="checkbox" class="error-type" id="RemoveUnusedMethodsInHelpersReview" value="RemoveUnusedMethodsInHelpersReview"
-                />&nbsp;<label for="RemoveUnusedMethodsInHelpersReview">Remove Unused Methods In Helpers</label>
+                <input type="checkbox" class="error-type" id="ReplaceInstanceVariableWithLocalVariableReview" value="ReplaceInstanceVariableWithLocalVariableReview"
+                />&nbsp;<label for="ReplaceInstanceVariableWithLocalVariableReview">Replace Instance Variable With Local Variable</label>
               </td>
               <td>
-                <input type="checkbox" class="error-type" id="RemoveTrailingWhitespaceCheck" value="RemoveTrailingWhitespaceCheck"
-                />&nbsp;<label for="RemoveTrailingWhitespaceCheck">Remove Trailing Whitespace</label>
+                <input type="checkbox" class="error-type" id="UseScopeAccessReview" value="UseScopeAccessReview"
+                />&nbsp;<label for="UseScopeAccessReview">Use Scope Access</label>
               </td>
           </tr>
         <tr>
@@ -124,7 +152,187 @@
             </td>
             <td class='line'></td>
             <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (bids => [user_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (bids => [item_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (creditcards => [user_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
               <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (items => [user_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (items => [category_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (purchases => [user_id])</a>
+            </td>
+          </tr>
+          <tr class="AlwaysAddDbIndexReview">
+            <td class='filename'>
+                db/schema.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/21-always-add-db-index' target='_blank'>always add db index (purchases => [item_id])</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/purchases/new.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/purchases/new.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/cart.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/cart.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/cart.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/cart.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/show.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/show.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/show.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoControllerReview">
+            <td class='filename'>
+                app/views/users/show.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/24-move-code-into-controller' target='_blank'>move code into controller</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoHelperReview">
+            <td class='filename'>
+                app/views/creditcards/edit.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoHelperReview">
+            <td class='filename'>
+                app/views/creditcards/edit.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoHelperReview">
+            <td class='filename'>
+                app/views/creditcards/new.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
+            </td>
+          </tr>
+          <tr class="MoveCodeIntoHelperReview">
+            <td class='filename'>
+                app/views/creditcards/new.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
             </td>
           </tr>
           <tr class="MoveCodeIntoHelperReview">
@@ -147,16 +355,178 @@
           </tr>
           <tr class="MoveCodeIntoHelperReview">
             <td class='filename'>
-                app/views/items/edit.html.erb
+                app/views/items/new.html.erb
             </td>
             <td class='line'></td>
             <td class='message'>
               <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
             </td>
           </tr>
+          <tr class="MoveCodeIntoHelperReview">
+            <td class='filename'>
+                app/views/items/new.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/26-move-code-into-helper' target='_blank'>move code into helper (array_count >= 3)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@bid use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (format use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@item use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@bid use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (format use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/creditcards_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@creditcard use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/items_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@item use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/items_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@item use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@item use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (bid use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@purchase use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="MoveModelLogicIntoModelReview">
+            <td class='filename'>
+                app/controllers/users_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/7-move-model-logic-into-the-model' target='_blank'>move model logic into model (@user use_count > 4)</a>
+            </td>
+          </tr>
+          <tr class="ProtectMassAssignmentReview">
+            <td class='filename'>
+                app/models/bid.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/148-protect-mass-assignment' target='_blank'>protect mass assignment</a>
+            </td>
+          </tr>
+          <tr class="ProtectMassAssignmentReview">
+            <td class='filename'>
+                app/models/category.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/148-protect-mass-assignment' target='_blank'>protect mass assignment</a>
+            </td>
+          </tr>
+          <tr class="ProtectMassAssignmentReview">
+            <td class='filename'>
+                app/models/creditcard.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/148-protect-mass-assignment' target='_blank'>protect mass assignment</a>
+            </td>
+          </tr>
           <tr class="ProtectMassAssignmentReview">
             <td class='filename'>
                 app/models/item.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/148-protect-mass-assignment' target='_blank'>protect mass assignment</a>
+            </td>
+          </tr>
+          <tr class="ProtectMassAssignmentReview">
+            <td class='filename'>
+                app/models/message.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/148-protect-mass-assignment' target='_blank'>protect mass assignment</a>
+            </td>
+          </tr>
+          <tr class="ProtectMassAssignmentReview">
+            <td class='filename'>
+                app/models/purchase.rb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -174,7 +544,7 @@
           </tr>
           <tr class="RemoveEmptyHelpersReview">
             <td class='filename'>
-                app/helpers/static_pages_helper.rb
+                app/helpers/categories_helper.rb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -183,7 +553,25 @@
           </tr>
           <tr class="RemoveEmptyHelpersReview">
             <td class='filename'>
-                app/helpers/items_helper.rb
+                app/helpers/creditcards_helper.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/72-remove-empty-helpers' target='_blank'>remove empty helpers</a>
+            </td>
+          </tr>
+          <tr class="RemoveEmptyHelpersReview">
+            <td class='filename'>
+                app/helpers/messages_helper.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/72-remove-empty-helpers' target='_blank'>remove empty helpers</a>
+            </td>
+          </tr>
+          <tr class="RemoveEmptyHelpersReview">
+            <td class='filename'>
+                app/helpers/static_pages_helper.rb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -197,6 +585,33 @@
             <td class='line'></td>
             <td class='message'>
               <a href='' target='_blank'>remove unused methods (ItemsController#correct_user)</a>
+            </td>
+          </tr>
+          <tr class="RemoveUnusedMethodsInControllersReview">
+            <td class='filename'>
+                app/controllers/users_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='' target='_blank'>remove unused methods (UsersController#validate_email)</a>
+            </td>
+          </tr>
+          <tr class="RemoveUnusedMethodsInHelpersReview">
+            <td class='filename'>
+                app/helpers/items_helper.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='' target='_blank'>remove unused methods (ItemsHelper#findWinner)</a>
+            </td>
+          </tr>
+          <tr class="RemoveUnusedMethodsInHelpersReview">
+            <td class='filename'>
+                app/helpers/items_helper.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='' target='_blank'>remove unused methods (ItemsHelper#checkItemStatus)</a>
             </td>
           </tr>
           <tr class="RemoveUnusedMethodsInHelpersReview">
@@ -250,7 +665,7 @@
             </td>
             <td class='line'></td>
             <td class='message'>
-              <a href='' target='_blank'>remove unused methods (SessionsHelper#admin_user)</a>
+              <a href='' target='_blank'>remove unused methods (SessionsHelper#check_credit_card_info)</a>
             </td>
           </tr>
           <tr class="RemoveUnusedMethodsInHelpersReview">
@@ -262,9 +677,90 @@
               <a href='' target='_blank'>remove unused methods (SessionsHelper#redirect_back_or)</a>
             </td>
           </tr>
+          <tr class="RemoveUnusedMethodsInHelpersReview">
+            <td class='filename'>
+                app/helpers/sessions_helper.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='' target='_blank'>remove unused methods (SessionsHelper#stored_location)</a>
+            </td>
+          </tr>
+          <tr class="ReplaceComplexCreationWithFactoryMethodReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/6-replace-complex-creation-with-factory-method' target='_blank'>replace complex creation with factory method (@bid attribute_assignment_count > 2)</a>
+            </td>
+          </tr>
+          <tr class="ReplaceComplexCreationWithFactoryMethodReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/6-replace-complex-creation-with-factory-method' target='_blank'>replace complex creation with factory method (@purchase attribute_assignment_count > 2)</a>
+            </td>
+          </tr>
           <tr class="ReplaceInstanceVariableWithLocalVariableReview">
             <td class='filename'>
-                app/views/users/_form.html.erb
+                app/views/categories/_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/categories/_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/categories/_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/categories/_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_activate_item.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_deactivate_item.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_deactivate_item_form.html.erb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -280,9 +776,81 @@
               <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
             </td>
           </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_item.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_item.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/items/_navigation.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/users/_activate_user.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/users/_deactivate_user.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/users/_deactivate_user_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/users/_form.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
+          <tr class="ReplaceInstanceVariableWithLocalVariableReview">
+            <td class='filename'>
+                app/views/users/_user.html.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/27-replace-instance-variable-with-local-variable' target='_blank'>replace instance variable with local variable</a>
+            </td>
+          </tr>
           <tr class="SimplifyRenderInControllersReview">
             <td class='filename'>
-                app/controllers/users_controller.rb
+                app/controllers/bids_controller.rb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -291,7 +859,34 @@
           </tr>
           <tr class="SimplifyRenderInControllersReview">
             <td class='filename'>
-                app/controllers/users_controller.rb
+                app/controllers/categories_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/categories_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/creditcards_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/creditcards_controller.rb
             </td>
             <td class='line'></td>
             <td class='message'>
@@ -316,13 +911,130 @@
               <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
             </td>
           </tr>
-          <tr class="RemoveTrailingWhitespaceCheck">
+          <tr class="SimplifyRenderInControllersReview">
             <td class='filename'>
-                app/views/users/show.html.erb
+                app/controllers/messages_controller.rb
             </td>
-            <td class='line'>24</td>
+            <td class='line'></td>
             <td class='message'>
-              <a href='http://rails-bestpractices.com/posts/60-remove-trailing-whitespace' target='_blank'>remove trailing whitespace</a>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/users_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInControllersReview">
+            <td class='filename'>
+                app/controllers/users_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/62-simplify-render-in-controllers' target='_blank'>simplify render in controllers</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInViewsReview">
+            <td class='filename'>
+                app/views/items/activate_item.js.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInViewsReview">
+            <td class='filename'>
+                app/views/items/deactivate_item.js.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInViewsReview">
+            <td class='filename'>
+                app/views/users/activate_user.js.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+            </td>
+          </tr>
+          <tr class="SimplifyRenderInViewsReview">
+            <td class='filename'>
+                app/views/users/deactivate_user.js.erb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/61-simplify-render-in-views' target='_blank'>simplify render in views</a>
+            </td>
+          </tr>
+          <tr class="UseModelAssociationReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/2-use-model-association' target='_blank'>use model association (for @bid)</a>
+            </td>
+          </tr>
+          <tr class="UseModelAssociationReview">
+            <td class='filename'>
+                app/controllers/purchases_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/2-use-model-association' target='_blank'>use model association (for @purchase)</a>
+            </td>
+          </tr>
+          <tr class="UseMultipartAlternativeAsContentTypeOfEmailReview">
+            <td class='filename'>
+                app/mailers/user_mailer.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/41-use-multipart-alternative-as-content_type-of-email' target='_blank'>use multipart/alternative as content_type of email</a>
+            </td>
+          </tr>
+          <tr class="UseScopeAccessReview">
+            <td class='filename'>
+                app/controllers/bids_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/3-use-scope-access' target='_blank'>use scope access</a>
+            </td>
+          </tr>
+          <tr class="UseScopeAccessReview">
+            <td class='filename'>
+                app/controllers/creditcards_controller.rb
+            </td>
+            <td class='line'></td>
+            <td class='message'>
+              <a href='http://rails-bestpractices.com/posts/3-use-scope-access' target='_blank'>use scope access</a>
             </td>
           </tr>
       </tbody>

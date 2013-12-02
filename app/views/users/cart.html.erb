@@ -14,49 +14,49 @@
   <!-- display all the items that the user has added to cart -->
   <div class="" style="float: right;width: 90%">
     <div class="span10 offset1">
-    <h4> My Shopping Cart </h4>
+      <h4> My Shopping Cart </h4>
       <table class="table table-striped">
-         <tr>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-         </tr>
-         <% @cart_items.each do |bid| %>
-            <% item = Item.find(bid.item_id) %>
-            <tr>
-            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= bid.quantity %></td>
-            <td><%= bid.bid_price %></td>
-            <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
-            </tr>
-         <% end %>
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <% @cart_items.each do |bid| %>
+          <% item = Item.find(bid.item_id) %>
+        <tr>
+          <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+          <td><%= bid.quantity %></td>
+          <td><%= bid.bid_price %></td>
+          <!--<td><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %></td>-->
+        </tr>
+      <% end %>
       </table>
     </div>
   </div>
 
   <% if @unpaid_auctions.size != 0 %>
-  <!-- display all the auctions items that the user won and has not pay for -->
+    <!-- display all the auctions items that the user won and has not pay for -->
   <div class="" style="float: right;width: 90%">
     <div class="span10 offset1">
-    <h4> Unpaid Auctions </h4>
+      <h4> Unpaid Auctions </h4>
       <table class="table table-striped">
-         <tr>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-         </tr>
-         <% @unpaid_auctions.each do |bid| %>
-            <% item = Item.find(bid.item_id) %>
-            <tr>
-            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= bid.quantity %></td>
-            <td><%= bid.bid_price %></td>
-            </tr>
-         <% end %>
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+        <% @unpaid_auctions.each do |bid| %>
+          <% item = Item.find(bid.item_id) %>
+        <tr>
+          <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+          <td><%= bid.quantity %></td>
+          <td><%= bid.bid_price %></td>
+        </tr>
+      <% end %>
       </table>
     </div>
   </div>
-  <% end %>
+<% end %>
 
   <!--total price and checkout -->
   <div class="" style="float: right;width: 90%">

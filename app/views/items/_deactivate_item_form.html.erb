@@ -1,9 +1,9 @@
 <% if current_user.is_admin? %>
-    <div id ="deactivate_item_form">
-      <% if @item.deactivated ==true %>
-        <%= render 'activate_item'%>
-      <% else %>
-        <%= render 'deactivate_item'%>
-      <% end %>
-    </div>
+  <div id ="deactivate_item_form">
+  <% if @item.deactivated ==true %>
+    <%= render 'activate_item'%>
+<% else %>
+    <%= render 'deactivate_item'%>
+<% end %>
+</div>
 <% end %>

@@ -57,8 +57,8 @@ class BidsController < ApplicationController
       if @total <= @item.quantity
         @bids[i].update_attribute(:quantity,(@total))
         respond_to do |format|
-        format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
-        format.json { render json: @bid, status: :created, location: @bid }
+          format.html { redirect_to "/users/#{current_user.id}/cart", notice: 'Cart Updated!' }
+          format.json { render json: @bid, status: :created, location: @bid }
         end
       else
         respond_to do |format|

@@ -9,95 +9,95 @@
         <%= @user.fname %>
       </h1>
     </section>
-   </div>
+  </div>
 
   <!-- display all the items that the user has created -->
   <div class="col-md-9" >
 
-  <% if is_admin? %>
-    <div class="span10 offset1">
+    <% if is_admin? %>
+      <div class="span10 offset1">
       <!-- to be modified -->
-        <%= render 'deactivate_user_form' %>
-        <!--<%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>-->
-        <!--<%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>-->
+      <%= render 'deactivate_user_form' %>
+      <!--<%= link_to "Delete User", "#", class: "btn btn-medium btn-primary" %>-->
+      <!--<%= link_to "Make User an Administrator", "#", class: "btn btn-medium btn-primary" %>-->
     </div>
     <br></br>
   <% end %>
 
-  <!-- display user's items (for sell and auction) -->
-  <% if is_seller? %>
-    <div class="span10 offset1">
-    <h4> My items </h4>
+    <!-- display user's items (for sell and auction) -->
+    <% if is_seller? %>
+      <div class="span10 offset1">
+      <h4> My items </h4>
       <table class="table table-striped">
-         <tr>
-            <th>Item Name</th>
-            <th>Base Price</th>
-            <th>Status</th>
-            <th>Options</th>
-         </tr>
-         <% @items.each do |item| %>
-            <% @statusStr = itemStatusStr(item) %>
-            <tr>
-            <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-            <td><%= item.base_price %></td>
-            <td><%= "#{@statusStr}" %></td>
-            <td><% if !item.for_auction %>
-              <%= link_to 'Remove', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %>
-                <% end %></td>
-            </tr>
-         <% end %> 
+        <tr>
+          <th>Item Name</th>
+          <th>Base Price</th>
+          <th>Status</th>
+          <th>Options</th>
+        </tr>
+        <% @items.each do |item| %>
+          <% @statusStr = itemStatusStr(item) %>
+        <tr>
+          <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+          <td><%= item.base_price %></td>
+          <td><%= "#{@statusStr}" %></td>
+          <td><% if !item.for_auction %>
+            <%= link_to 'Remove', item, method: :delete, data: {confirm: 'Are you sure?'}, remote: true, class: 'delete_item' %>
+          <% end %></td>
+        </tr>
+      <% end %>
       </table>
     </div>
   <% end %>
 
     <!-- display all the items that the user has bid on -->
     <div class="span10 offset1">
-    <h4> Bidding History </h4>
+      <h4> Bidding History </h4>
       <table class="table table-striped">
-         <tr>
-            <th>Item Name</th>
-            <th>Bid price</th>
-            <th>Status</th>
-            <th> </th>
-         </tr>
-         <% @bids.each do |bid| %>
-            <% @item = Item.find(bid.item_id) %>
-            <% @statusStr = itemStatusStr(@item) %>
-            <% if @item.for_auction %>
-                 <tr>
-                    <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
-                    <td><%= bid.bid_price %></td>
-                    <td><%= "#{@statusStr}" %></td>
-                    <td><%= "#{bidStatusStr(bid)}" %></td>
-                 </tr>
-            <% end %>
-         <% end %>
+        <tr>
+          <th>Item Name</th>
+          <th>Bid price</th>
+          <th>Status</th>
+          <th> </th>
+        </tr>
+        <% @bids.each do |bid| %>
+          <% @item = Item.find(bid.item_id) %>
+        <% @statusStr = itemStatusStr(@item) %>
+        <% if @item.for_auction %>
+          <tr>
+          <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
+          <td><%= bid.bid_price %></td>
+          <td><%= "#{@statusStr}" %></td>
+          <td><%= "#{bidStatusStr(bid)}" %></td>
+        </tr>
+      <% end %>
+      <% end %>
       </table>
     </div>
 
     <!-- display all the items that the user has purchased -->
     <div class="span10 offset1">
-    <h4> Purchase History </h4>
+      <h4> Purchase History </h4>
       <table class="table table-striped">
-         <tr>
-            <th>Item Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total Cost</th>
-         </tr>
-         <% @purchases.each do |purchase| %>
-         <tr>
-            <% @item = Item.find(purchase.item_id) %>
-            <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
-            <td><%= purchase.quantity %></td>
-            <td><%= purchase.price %></td>
-            <td><%= purchase.cost %></td>
-         </tr>
-         <% end %>
+        <tr>
+          <th>Item Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total Cost</th>
+        </tr>
+        <% @purchases.each do |purchase| %>
+          <tr>
+          <% @item = Item.find(purchase.item_id) %>
+          <td><%= image_tag @item.pic.url(:thumb)%><%= link_to @item.name, @item %></td>
+          <td><%= purchase.quantity %></td>
+          <td><%= purchase.price %></td>
+          <td><%= purchase.cost %></td>
+        </tr>
+      <% end %>
       </table>
     </div>
 
 
-   </div>
+  </div>
 
 </div>

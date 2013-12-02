@@ -1,4 +1,4 @@
- class UsersController < ApplicationController
+class UsersController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update,:destroy, :enter_credit_card, :update_credit_card]
   before_filter :correct_user,   only: [:edit, :update, :enter_credit_card, :update_credit_card]
   before_filter :is_admin?,     only: :destroy
@@ -66,7 +66,6 @@
   def create
     @user = User.new(params[:user])
     @user.is_admin = false
-    
     respond_to do |format|
       if @user.save
         @user.activate_new_user
@@ -77,7 +76,7 @@
 
           if @user.is_seller
             store_location
-	    redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
+            redirect_to new_creditcard_path, notice: 'Please enter your credit card information'
           elsif @user.deactivated?
             redirect_to signin_path, notice: 'You need to activate your account before you login. Please check your mail'
           else
@@ -121,7 +120,7 @@
     end
   end
 
-    # GET /users/1/cart
+  # GET /users/1/cart
   def cart
     @user = User.find(params[:id])
     @bids = Bid.find_all_by_user_id(current_user.id)
@@ -179,16 +178,15 @@
   # Takes activation token of a newly created user and activates him
   def activate_new_user
     new_user =  User.find_by_activation_token(params[:activation_token])
-    
     if new_user != nil
       new_user.deactivated = false
       new_user.save
       sign_in new_user
-      
+
       if new_user.is_seller
         redirect_to new_creditcard_path, notice: 'Welcome to BestBay! Please provide your creditcard details to be able to sell'	
       else
-        redirect_to new_user, notice: 'Welcome to BestBay! Your account has been activated'       
+        redirect_to new_user, notice: 'Welcome to BestBay! Your account has been activated'
       end
     else
       redirect_to items_path, notice: 'Invalid activation link provided. Please check mail again'
@@ -197,9 +195,9 @@
 
   private
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_path) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_path) unless current_user?(@user)
+  end
 
 end

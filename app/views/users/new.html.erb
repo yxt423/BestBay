@@ -1,37 +1,37 @@
 <% provide(:title, 'Sign Up') %>
 <div class="row">
 
- <div class="col-md-3 hidden-xs">
+  <div class="col-md-3 hidden-xs">
 
- </div>
+  </div>
 
- <div class="col-md-6 container">
-   <div>
-     <h2>Sign Up</h2>
-   </div>
+  <div class="col-md-6 container">
+    <div>
+      <h2>Sign Up</h2>
+    </div>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-      <%= f.label :'First Name' %>
-      <%= f.text_field :fname, class:"form-control" %>
+    <%= f.label :'First Name' %>
+    <%= f.text_field :fname, class:"form-control" %>
 
-      <%= f.label :'Last Name' %>
-      <%= f.text_field :lname, class:"form-control"  %>
+    <%= f.label :'Last Name' %>
+    <%= f.text_field :lname, class:"form-control"  %>
 
-      <%= f.label :'Email' %>
-      <%= f.text_field :email, class:"form-control"  %>
+    <%= f.label :'Email' %>
+    <%= f.text_field :email, class:"form-control"  %>
 
-      <%= f.label :'Password' %>
-      <%= f.password_field :password, class:"form-control"  %>
+    <%= f.label :'Password' %>
+    <%= f.password_field :password, class:"form-control"  %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation, class:"form-control"  %>
-      <br>
-      <%= f.check_box :is_seller  %>
-      <%= f.label :'I want to sell (Credit card information will be required)' %>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation, class:"form-control"  %>
+    <br>
+    <%= f.check_box :is_seller  %>
+    <%= f.label :'I want to sell (Credit card information will be required)' %>
 
-      <br><br/>
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-    <% end %>
+    <br><br/>
+    <%= f.submit "Create my account", class: "btn btn-primary" %>
+  <% end %>
   </div>
   <div class="col-md-3 hidden-xs">
 

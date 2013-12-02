@@ -1,9 +1,9 @@
 <% if current_user.is_admin? %>
-    <div id ="deactivate_user_form">
-      <% if @user.deactivated == true %>
-        <%= render 'activate_user'%>
-      <% else %>
-        <%= render 'deactivate_user'%>
-      <% end %>
-    </div>
+  <div id ="deactivate_user_form">
+  <% if @user.deactivated == true %>
+    <%= render 'activate_user'%>
+<% else %>
+    <%= render 'deactivate_user'%>
+<% end %>
+</div>
 <% end %>

@@ -2,7 +2,7 @@ class Creditcard < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :credit_card_no, :expiry_month, :expiry_year,
-                  :primary_credit_card, :security_code, :user_id
+    :primary_credit_card, :security_code, :user_id
 
 
   validates :credit_card_no,:expiry_month,:expiry_year,:security_code, presence: true
@@ -26,7 +26,7 @@ class Creditcard < ActiveRecord::Base
 
   def valid_expiry_date
     if expiry_year < Time.now.year || (expiry_year == Time.now.year && expiry_month < Time.now.month )
-        errors.add(:expiry_month, "can't be in the past")
+      errors.add(:expiry_month, "can't be in the past")
     end
   end
 
