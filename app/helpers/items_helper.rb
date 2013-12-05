@@ -41,7 +41,7 @@ module ItemsHelper
     item_status_str = ""
     case item.status
     when 0
-      item_status_str = "for sell"
+      item_status_str = "for sale"
     when 1
       item_status_str = "ongoing auction"
     when 2
