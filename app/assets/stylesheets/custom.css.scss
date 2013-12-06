@@ -69,6 +69,19 @@ p {
   line-height: 1;
 }
 
+#others {
+  float: right;
+  margin-right: 10px;
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  padding-top: 14px;
+  line-height: 1;
+}
+
+#others:hover {
+  text-decoration: none;
+}
+
 #logo:hover {
   color: #fff;
   text-decoration: none;

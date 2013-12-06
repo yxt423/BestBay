@@ -1,25 +1,25 @@
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="navbar-header" >
     <div class="container">
-      <%= link_to "BestBay", root_path, id: "logo" %>
+      <%= link_to "BestBay", root_path, id: "logo"%>
       <nav>
         <ul class="list-inline pull-right">
           <% if signed_in? %>
 
             <!--the content for administrator-->
           <% if is_admin? %>
-            <li><%= link_to "Hi, #{current_user.fname} ", "#" ,{:style => 'color: orange'}%></li>
-          <li><%= link_to "All Users", "/users" ,{:style => 'color: white'}%></li>
-          <li><%= link_to "Manage Categories", "/categories" ,{:style => 'color: white'}%></li>
-          <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <li><%= link_to "Hi, #{current_user.fname} ", "#" , id: "others", style: "color: orange" %></li>
+          <li><%= link_to "All Users", "/users" , id: "others", style: "color: white"%></li>
+          <li><%= link_to "Manage Categories", "/categories" ,id: "others" ,style: "color: white" %></li>
+          <li><%= link_to "Sign out", signout_path,id: "others", method: "delete" %></li>
 
           <!--the content for normal user-->
         <% else %>
-            <li><%= link_to "Hi, #{current_user.fname} ", current_user,{:style => 'color: orange'}%></li>
-          <li><%= link_to "Sell", new_item_path(:auction => false ) %></li>
-          <li><%= link_to "Start an Auction", new_item_path(:auction => true ) %></li>
+            <li><%= link_to "Hi, #{current_user.fname} ", current_user, id: "others", style: "color: orange" %></li>
+          <li><%= link_to "Sell", new_item_path(:auction => false ), id: "others" %></li>
+          <li><%= link_to "Start an Auction", new_item_path(:auction => true ), id: "others" , style: "color: purple"%></li>
           <li id="fat-menu" class="dropdown">
-          <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+          <a href="#" id="others" role="button" class="dropdown-toggle" data-toggle="dropdown">
             Account <b class="caret"></b>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
@@ -34,13 +34,13 @@
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           </ul>
           </li>
-          <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" %></li>
+          <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" , id: "others" %></li>
         <% end %>
 
           <!--the content for not signed in user -->
         <% else %>
-            <li><%= link_to "Sign in", signin_path ,{:style => 'color: red'}%></li>
-          <li><%= link_to "Register", signup_path %></li>
+            <li><%= link_to "Sign in", signin_path , id: "others", style: "color: red" %></li>
+          <li><%= link_to "Register", signup_path ,id: "others" %></li>
         <% end %>
 
         </ul>
