@@ -8,18 +8,18 @@
 
             <!--the content for administrator-->
           <% if is_admin? %>
-            <li><%= link_to "Hi, #{current_user.fname} ", "#" , id: "others", style: "color: orange" %></li>
-          <li><%= link_to "All Users", "/users" , id: "others", style: "color: white"%></li>
-          <li><%= link_to "Manage Categories", "/categories" ,id: "others" ,style: "color: white" %></li>
+            <li><%= link_to "Hi, #{current_user.fname} ", "#" , id: "others", style: "color:#F3F781" %></li>
+          <li><%= link_to "All Users", "/users" , id: "others", style: "color:#A9D0F5"%></li>
+          <li><%= link_to "Manage Categories", "/categories" ,id: "others" ,style: "color:#A9D0F5" %></li>
           <li><%= link_to "Sign out", signout_path,id: "others", method: "delete" %></li>
 
           <!--the content for normal user-->
         <% else %>
-            <li><%= link_to "Hi, #{current_user.fname} ", current_user, id: "others", style: "color: orange" %></li>
-          <li><%= link_to "Sell", new_item_path(:auction => false ), id: "others" %></li>
-          <li><%= link_to "Start an Auction", new_item_path(:auction => true ), id: "others" , style: "color: white"%></li>
+            <li><%= link_to "Hi, #{current_user.fname} ", current_user, id: "others", style: "color:#F5DA81" %></li>
+          <li><%= link_to "Sell", new_item_path(:auction => false ), id: "others", style: "color:#A9D0F5" %></li>
+          <li><%= link_to "Start an Auction", new_item_path(:auction => true ), id: "others" , style: "color:#A9D0F5"%></li>
           <li id="fat-menu" class="dropdown">
-          <a href="#" id="others" role="button" class="dropdown-toggle" data-toggle="dropdown">
+          <a href="#" id="others" role="button" class="dropdown-toggle" data-toggle="dropdown" style="color:#A9D0F5">
             Account <b class="caret"></b>
           </a>
           <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
@@ -34,7 +34,7 @@
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           </ul>
           </li>
-          <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" , id: "others" %></li>
+          <li><%= link_to "My Cart", "/users/#{current_user.id}/cart" , id: "others", style: "color:#A9D0F5" %></li>
         <% end %>
 
           <!--the content for not signed in user -->
