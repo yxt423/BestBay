@@ -84,7 +84,7 @@
         <% if signed_in? %>
           <% if !is_admin? && (@item.user_id != current_user.id)%>
           <%= form_for @bid, :url => new_bid_path do |f| %>
-          <%= f.label :bid_price %><br>
+          <%= f.label :bid_price %></br>
         <%= f.text_field :bid_price %>
         <%= f.hidden_field :item_id, :value => @item.id %><br>
         <%= f.submit "Place a Bid", class: "btn btn-medium btn-primary" %>
