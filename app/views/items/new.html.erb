@@ -3,37 +3,36 @@
   <div class="col-md-3 hidden-xs">
 
   </div>
-
   <div class="col-md-6 container">
-    <div>
-      <h2>New Item</h2>
-    </div>
+
+      <h2 style="text-align: left">New Item</h2>
+
     <%= form_for @item,:html => { :multipart => true } do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-    <%= f.label :name %>
-    <%= f.text_field :name, class:"form-control" %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
 
-    <%= f.label :category_id %>
+    <%= f.label :category_id %><br>
     <% if @cats.empty?
          arr = [["All",0]]
     else
       arr = @cats.map { |c| [c.name, c.id ]}
     end
-  %>
-  <%= f.select :category_id, options_for_select(arr), class:"form-control"%>
+  %><br>
+  <%= f.select :category_id, options_for_select(arr)%><br>
 
-    <%= f.label :description %>
-    <%= f.text_area :description ,:cols => "70", :rows => "5", class:"form-control"%>
+    <%= f.label :description %><br>
+    <%= f.text_area :description ,:cols => "70", :rows => "5"%><br>
 
-    <%= f.label :base_price %>
-    <%= f.text_field :base_price, class:"form-control" %>
+    <%= f.label :base_price %><br>
+    <%= f.text_field :base_price %><br>
 
     <%= f.hidden_field :for_auction, :value => params[:auction] %>
     <% if params[:auction] == "true" %>
       <!--for auction: show duration inputs of bidding, mark quantity as 1, status as 1-->
     <%= f.hidden_field :quantity, :value => 1 %>
     <%= f.hidden_field :status, :value => 1 %>
-    <%= f.label :"Duration of Bid" %>
+    <%= f.label :"Duration of Bid" %><br>
     <table>
       <tr>
         <th><%= f.select :bid_days, options_for_select([0,1,2,3,4,5])%></th>
@@ -50,13 +49,13 @@
     </table>
   <% else %>
       <!--for sell: show quantity input field-->
-    <%= f.label :quantity %>
-    <%= f.text_field :quantity, class:"form-control" %>
+    <%= f.label :quantity %><br>
+    <%= f.text_field :quantity%><br>
   <% end %>
 
     <p>
     <b> Picture </b><br/>
-    <%= f.file_field :pic %>
+    <%= f.file_field :pic %><br>
     </p>
 
     <% if params[:auction] == "true" %>

@@ -8,11 +8,11 @@
     <%= form_for (@message) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-    <%= f.label :"Subject" %>
-    <%= f.text_field :subject %>
+    <%= f.label :"Subject" %><br>
+    <%= f.text_field :subject %><br>
 
-    <%= f.label :'Message' %>
-    <%= f.text_area :message_text%>
+    <%= f.label :'Message' %><br>
+    <%= f.text_area :message_text%><br>
 
     </br>
     <%= f.submit "Send", class: "btn btn-medium btn-primary" %>

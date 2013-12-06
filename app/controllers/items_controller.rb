@@ -31,7 +31,9 @@ class ItemsController < ApplicationController
     @winner = findWinner(@item)
 
     #update the viewed times counter of item
+    if @item.user_id != current_user.id
     @item.view_count = @item.view_count.to_i.next
+    end
     @item.save
 
     @bids = Bid.find_all_by_item_id(@item.id)

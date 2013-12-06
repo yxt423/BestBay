@@ -7,7 +7,7 @@
     <h2>
       <%= "#{@item.name}"%>
       <% if hotItem(@item) %>
-        <%= image_tag("hot.jpg", alt: "hot") %>
+        <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
     <% end %>
     </h2>
 
@@ -52,7 +52,7 @@
           <% if signed_in? %>
             <% if !is_admin? && (@item.user_id != current_user.id)%>
             <%= form_for @bid, :url => buy_bid_path(:item_id => @item.id) do |f| %>
-            <%= f.label :quantity %>
+            <%= f.label :quantity %><br>
           <%= f.text_field :quantity %>
           <br>
           <%= f.submit "Add to Cart", class: "btn btn-medium btn-primary" %>

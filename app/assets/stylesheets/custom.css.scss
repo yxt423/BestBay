@@ -141,13 +141,6 @@ aside {
       margin-bottom: 3px;
       line-height: 1;
     }
-    h1 {
-      font-size: 1.4em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
   }
 }
 
@@ -190,8 +183,9 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #ffffff;
-  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  width: 50%;
   padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;

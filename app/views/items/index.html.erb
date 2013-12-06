@@ -20,7 +20,7 @@
         <% i=i+1 %>
       <div class="col-xs-6 col-md-4">
         <%= image_tag item.pic.url(:medium) %>
-        <p>
+        <p style="text-align: left">
         <% if is_admin? && item.for_auction && auctionExpire?(item) %>
           <% @string = "(Auction closed)" %>
       <% else %>
@@ -28,13 +28,15 @@
       <% end %>
 
         <% if is_admin? && item.deactivated == true%>
+              <% if hotItem(item) %>
+                  <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
           <%= link_to "#{item.name} #{@string} (Deactivated)", item %>
+              <%end%>
       <% else %>
+              <% if hotItem(item) %>
+                  <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
           <%= link_to "#{item.name} #{@string}", item %>
-      <% end %>
-
-        <% if hotItem(item) %>
-          <%= image_tag("hot.jpg", alt: "hot") %>
+              <%end%>
       <% end %>
         </p>
       </div>

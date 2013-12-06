@@ -5,26 +5,26 @@
   </div>
 
   <div class="col-md-6 container">
-    <h2>Update your info</h2>
+    <h2 style="text-align: left">Update your info</h2>
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-    <%= f.label :'First Name' %>
-    <%= f.text_field :fname, class:"form-control" %>
+    <%= f.label :'First Name' %><br>
+    <%= f.text_field :fname %><br>
 
-    <%= f.label :'Last Name' %>
-    <%= f.text_field :lname, class:"form-control" %>
+    <%= f.label :'Last Name' %><br>
+    <%= f.text_field :lname %><br>
 
-    <%= f.label :'Email' %>
-    <%= f.text_field :email, class:"form-control" %>
+    <%= f.label :'Email' %><br>
+    <%= f.text_field :email %><br>
 
-    <%= f.label :'Shipping Address' %>
-    <%= f.text_field :shipping_address, class:"form-control" %>
+    <%= f.label :'Shipping Address' %><br>
+    <%= f.text_field :shipping_address %><br>
 
-    <%= f.label :'Phone No.' %>
-    <%= f.text_field :phone_no, class:"form-control" %>
-    <br>
+    <%= f.label :'Phone No.' %><br>
+    <%= f.text_field :phone_no %><br>
+
     <%= f.submit "Save changes", class: "btn btn-medium btn-primary" %>
-
+     <br><br>
   <% end %>
 
     <% if @user.creditcards.count >= 1 %>

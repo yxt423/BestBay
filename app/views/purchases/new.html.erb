@@ -27,8 +27,8 @@
       <%= render 'shared/error_messages', object: f.object %>
     <%= f.label :"Using Credit Card ending in: XXXX-XXXX-XXXX-#{@user.creditcards.first.credit_card_no[12..16]}" %>
     <br></br>
-    <%= f.label :'Shipping Address' %>
-    <%= f.text_field :shipping_address %>
+    <%= f.label :'Shipping Address' %><br>
+    <%= f.text_field :shipping_address %><br>
     <br>
     <%= f.submit "Confirm the Purchase", class: "btn btn-medium btn-primary" %>
   <% end %>
