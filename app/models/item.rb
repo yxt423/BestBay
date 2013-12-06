@@ -17,4 +17,5 @@ class Item < ActiveRecord::Base
     :created_at, :updated_at
 
 
+
 end

@@ -6,4 +6,6 @@ class Bid < ActiveRecord::Base
 
   validates :item_id, :user_id,:bid_price, :quantity, presence: true
 
+  default_scope order('created_at DESC')
+
 end

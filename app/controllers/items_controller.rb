@@ -40,7 +40,6 @@ class ItemsController < ApplicationController
 
     @bids = Bid.find_all_by_item_id(@item.id)
     @highest_bid = @bids[-1]
-
     #TO BUY AN ITEM :-
     if signed_in?
       @bid = current_user.bids.new

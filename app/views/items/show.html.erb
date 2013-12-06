@@ -76,7 +76,7 @@
         </div>
 
       <% else %>
-          <!-- for auction: auction status & bid button -->
+          <!-- for auction: auction status & bid button & bid history-->
 
         <% if @item.status == 1 %>
           <!-- for ongoing auction  -->
@@ -94,6 +94,29 @@
           <br></br>
         <p> Sign in to bid on this item</p>
       <% end %>
+
+        <!-- show bidding history  -->
+        <br></br>
+        <% if @bids.size != 0%>
+            <p>Bidding History</p>
+            <table>
+              <tr>
+                <th>price&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                <th>bidder</th>
+              </tr>
+            <% @bids.each do |bid| %>
+              <% bidder = User.find(bid.user_id) %>
+              <tr>
+                <th><%= "#{bid.bid_price}" %></th>
+                <th><%= "#{bidder.fname} #{bidder.lname}" %></th>
+              </tr>
+            <% end %>
+            </table>
+        <% else %>
+            <p>Bidding History:&nbsp;&nbsp;&nbsp;no bidders yet.</p>
+        <% end %>
+
+        <!-- for closed auction  -->
       <% else %>
           <p><%= "Auction has closed"%></p>
         <p><%= "The winner is #{@winner.fname} #{@winner.lname}"%></p>
