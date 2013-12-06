@@ -31,8 +31,10 @@ class ItemsController < ApplicationController
     @winner = findWinner(@item)
 
     #update the viewed times counter of item
+    if signed_in?
     if @item.user_id != current_user.id
     @item.view_count = @item.view_count.to_i.next
+    end
     end
     @item.save
 
@@ -71,7 +73,7 @@ class ItemsController < ApplicationController
   # POST /items
   def create
     @item = current_user.items.build(params[:item])
-    @item.view_count = -1
+    @item.view_count = 0
     @item.highest_bid = 0
 
     respond_to do |format|

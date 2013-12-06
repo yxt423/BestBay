@@ -19,7 +19,7 @@
       <% @items_to_show.each do |item| %>
         <% i=i+1 %>
       <div class="col-xs-6 col-md-4">
-        <%= image_tag item.pic.url(:medium) %>
+        <%= image_tag item.pic.url(:thumb) %>
         <p style="text-align: left">
         <% if is_admin? && item.for_auction && auctionExpire?(item) %>
           <% @string = "(Auction closed)" %>

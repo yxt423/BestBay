@@ -1,10 +1,11 @@
 <% provide(:title, "#{@item.name}") %>
 
 <div class="row">
-
+   <div>
+     </div>
   <section>
     <!-- Item name -->
-    <h2>
+    <h2 style="text-align: left">
       <%= "#{@item.name}"%>
       <% if hotItem(@item) %>
         <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
@@ -13,7 +14,7 @@
 
     <div style="float:left; width:40%;">             <!-- Left div -->
       <!-- Thumbnail image of the item -->
-      <%= image_tag @item.pic.url(:medium) %><br/>
+      <%= image_tag @item.pic.url(:thumb) %><br/>
       <br />
     </div>
 
