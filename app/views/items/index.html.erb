@@ -30,13 +30,15 @@
         <% if is_admin? && item.deactivated == true%>
               <% if hotItem(item) %>
                   <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
-          <%= link_to "#{item.name} #{@string} (Deactivated)", item %>
+
               <%end%>
+              <%= link_to "#{item.name} #{@string} (Deactivated)", item %>
       <% else %>
               <% if hotItem(item) %>
                   <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
-          <%= link_to "#{item.name} #{@string}", item %>
+
               <%end%>
+              <%= link_to "#{item.name} #{@string}", item %>
       <% end %>
         </p>
       </div>
