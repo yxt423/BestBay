@@ -2,17 +2,18 @@
 
 <div class="row">
 
-  <div class="" style="float: left;width: 10%">
+  <div class="col-md-3 hidden-xs">
     <section>
-      <h1>
-        <%= gravatar_for @user %>
+      <h1 style="float: none"><%= gravatar_for @user %> </h1>
+      <br />
+      <h1 style="float: left; clear: both">
         <%= @user.fname %>
       </h1>
     </section>
   </div>
 
   <!-- display all the items that the user has added to cart -->
-  <div class="" style="float: right;width: 90%">
+  <div class="col-md-9">
     <div class="span10 offset1">
       <h4> My Shopping Cart </h4>
       <table class="table table-striped">
@@ -32,38 +33,41 @@
       <% end %>
       </table>
     </div>
+
+    <% if @unpaid_auctions.size != 0 %>
+        <!-- display all the auctions items that the user won and has not pay for -->
+        <div>
+          <div class="span10 offset1">
+            <h4> Unpaid Auctions </h4>
+            <table class="table table-striped">
+              <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+              <% @unpaid_auctions.each do |bid| %>
+                  <% item = Item.find(bid.item_id) %>
+                  <tr>
+                    <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
+                    <td><%= bid.quantity %></td>
+                    <td><%= bid.bid_price %></td>
+                  </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+    <% end %>
+
+    <!--total price and checkout -->
+    <div class="" style="float: right">
+      <div class="span10 offset1">
+        <h4 style="color:red;" > Total Price: <%= " #{total_price(@purchase_items)}" %> </h4>
+        <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
+      </div>
+    </div>
+
   </div>
 
-  <% if @unpaid_auctions.size != 0 %>
-    <!-- display all the auctions items that the user won and has not pay for -->
-  <div class="" style="float: right;width: 90%">
-    <div class="span10 offset1">
-      <h4> Unpaid Auctions </h4>
-      <table class="table table-striped">
-        <tr>
-          <th>Item Name</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-        <% @unpaid_auctions.each do |bid| %>
-          <% item = Item.find(bid.item_id) %>
-        <tr>
-          <td><%= image_tag item.pic.url(:thumb)%><%= link_to item.name, item %></td>
-          <td><%= bid.quantity %></td>
-          <td><%= bid.bid_price %></td>
-        </tr>
-      <% end %>
-      </table>
-    </div>
-  </div>
-<% end %>
 
-  <!--total price and checkout -->
-  <div class="" style="float: right;width: 90%">
-    <div class="span10 offset1">
-      <h4 style="color:red;" > Total Price: <%= " #{total_price(@purchase_items)}" %> </h4>
-      <%= link_to "Checkout", new_purchase_path, class: "btn btn-medium btn-primary" %>
-    </div>
-  </div>
 
 </div>
