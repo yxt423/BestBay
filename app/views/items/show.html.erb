@@ -1,21 +1,31 @@
 <% provide(:title, "#{@item.name}") %>
 
 <div class="row">
-   <div>
-     </div>
-  <section>
-    <!-- Item name -->
-    <h2 style="text-align: left">
+  <div class="col-md-1">
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 style="text-align: left">
       <%= "#{@item.name}"%>
       <% if hotItem(@item) %>
-        <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
-    <% end %>
-    </h2>
+          <%= image_tag("hot.jpg", alt: "hot", height: "22px", width: "50px") %>
+      <% end %>
+          </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+
+    <!-- Item name -->
 
     <div style="float:left; width:40%;">             <!-- Left div -->
       <!-- Thumbnail image of the item -->
-      <%= image_tag @item.pic.url(:thumb) %><br/>
-      <br />
+      <div class="col-md-1">
+      </div>
+      <% if request.user_agent.scan("Mobile").blank? %>
+          <%= image_tag @item.pic.url(:medium) %><br/>
+      <% else%>
+          <%= image_tag @item.pic.url(:thumb) %><br/>
+      <% end %>
     </div>
 
     <div style="float:right; width:60%">       <!-- Right div -->
@@ -101,7 +111,9 @@
 
       </div>
     </div>
-  </section>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= link_to 'Back', items_path %>
