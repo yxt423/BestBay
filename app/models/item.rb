@@ -7,7 +7,7 @@ class Item < ActiveRecord::Base
   validates :name, length: { maximum: 256 }
   validates :description, length: { maximum: 1024 }
   has_attached_file :pic, :styles =>
-  { :medium => "300x300>", :thumb => "200x200>" }
+  { :medium => "300x300>", :thumb => "100x100>",:home => "200x200" }
   belongs_to :user
 
   attr_accessible :base_price, :category_id, :description, :image_1, :image_2, :image_3,
